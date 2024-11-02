@@ -32,9 +32,9 @@ I believe posting these mistakes will help future viewers who visit this blog by
 ## Table of Contents
 
 1. Introduction  
-   a. [Objective]({{ site.baseurl }}/posts/pll-introductions/#1a-objective-designing-a-24ghz-phased-locked-loop-with-open-source-materials-using-the-skywater130-pdk)  
-   b. [Design Considerations]({{ site.baseurl }}/posts/pll-introductions/#1b-design-considerations)  
-   c. [Order of the Designs]({{ site.baseurl }}/posts/pll-introductions/#1c-order-of-the-designs)  
+   a. [Objective]({{ site.url }}{{ site.baseurl }}/posts/pll-introductions/#1a-objective-designing-a-24ghz-phased-locked-loop-with-open-source-materials-using-the-skywater130-pdk)  
+   b. [Design Considerations]({{ site.url }}{{ site.baseurl }}/posts/pll-introductions/#1b-design-considerations)  
+   c. [Order of the Designs]({{ site.url }}{{ site.baseurl }}/posts/pll-introductions/#1c-order-of-the-designs)  
 
 2. Part 1 (Completed)  
    a. [PLL Design Parameters]  
