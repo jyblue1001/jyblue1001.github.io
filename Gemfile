@@ -4,7 +4,9 @@ source "https://rubygems.org"
 
 gem "jekyll-theme-chirpy", "~> 7.1"
 
-gem "html-proofer", "~> 3.0", group: :test
+gem "html-proofer", "~> 5.0", group: :test
+
+gem "logger"  # Add logger gem to prevent warnings in Ruby 3.5.0
 
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"
