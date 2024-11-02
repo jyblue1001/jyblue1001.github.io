@@ -23,7 +23,8 @@ I believe posting these mistakes will help future viewers who visit this blog by
  **Part 1**: Determining the PLL specs and simulation of its schematicss (Complete)  
  **Part 2**: Layout, DRC, extraction, LVS, and Post-layout simulations (In Progess...)  
 
-<img src="{{site.url}}/images/analog_circuit_design_flow.png" style="display: block; margin: auto;" />
+<img src="{{site.url}}/images/analog_circuit_design_flow.png" alt="Analog Circuit Design Flow" style="display: block; margin: auto;" />
+
 
 ---
 
@@ -36,13 +37,13 @@ I believe posting these mistakes will help future viewers who visit this blog by
    c. [Order of the Designs](http://127.0.0.1:4000/posts/pll-introductions/#1c-order-of-the-designs)  
 
 2. Part 1 (Completed)  
-   a. [PLL Design Parameters](#pll-design-parameters)  
-   b. [VCO](#vco)  
-   c. [Loop Filter](#loop-filter)
-   d. [Frequency Phase Detector](#frequency-phase-detector)  
-   e. [Charge Pump](#charge-pump)  
-   f. [Frequency Divider](#frequency-divider)  
-   g. [Full PLL](#full-pll)  
+   a. [PLL Design Parameters]  
+   b. [VCO]  
+   c. [Loop Filter]  
+   d. [Frequency Phase Detector]  
+   e. [Charge Pump]  
+   f. [Frequency Divider]  
+   g. [Full PLL]  
 
 3. Part 2 (In Progress)
 
