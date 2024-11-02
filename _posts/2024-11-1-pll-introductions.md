@@ -9,7 +9,7 @@ comments: true
 
 # Table of Contents
 
-1. [Introduction](#introduction)  
+1. [Introduction] 
    A. [Objective](#1a-objective-designing-a-24ghz-phased-locked-loop-with-open-source-materials-using-the-skywater130-pdk)  
    B. [Design Considerations](#1b-design-considerations)  
    C. [Order of the Designs](#1c-order-of-the-designs)  
