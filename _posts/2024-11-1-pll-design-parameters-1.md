@@ -10,7 +10,7 @@ description: "A detailed walkthrough of designing a 3rd order PLL with a 2nd ord
 
 Our target architecture will look like this. One thing to point out is that it is a 3rd order PLL with a 2nd order loop filter.
 
-<img src="{{site.url}}/images/third_order_pll.png" style="display: block; margin: auto;" />
+<img src="{{site.url}}/images/third_order_pll.png" style="display: block; margin: auto;" alt="Diagram of a third order PLL" />
 
 ---
 
@@ -18,7 +18,7 @@ Our target architecture will look like this. One thing to point out is that it i
 
 However, when we are determining the design parameters, we define a 2nd order PLL with a 1st order loop filter.
 
-<img src="{{site.url}}/images/second_order_pll.png" style="display: block; margin: auto;" />
+<img src="{{site.url}}/images/second_order_pll.png" style="display: block; margin: auto;" alt="Diagram of a second-order PLL" />
 
 ---
 
@@ -33,11 +33,12 @@ As a rule of thumb, \(C2\) is normally set to 0.1~0.2 of the value of \(C1\).
 ## Transfer Function
 We start with this equation, which is the transfer function of the PLL, assuming \(K_vco\) is linear for now:
 
-<img src="{{site.url}}/images/pll_transfer_function.png" style="display: block; margin: auto;" />
+<img src="{{site.url}}/images/pll_transfer_function.png" style="display: block; margin: auto;" alt="Equation showing the PLL transfer function" />
 
 Simplified:
 
-<img src="{{site.url}}/images/simplified_pll_transfer_function.png" style="display: block; margin: auto;" />
+<img src="{{site.url}}/images/simplified_pll_transfer_function.png" style="display: block; margin: auto;" alt="Simplified PLL transfer function equation" />
+
 
 ### Design Parameters
 The design parameters are as follows:
