@@ -71,8 +71,8 @@ Here are the main open-source tools and resources I used for this project:
 
   [Xschem (schematics)](https://xschem.sourceforge.io/stefan/index.html)  
   [Ngspice (simulations)](https://ngspice.sourceforge.io/)  
-  [Magic VLSI (layout)](http://opencircuitdesign.com/magic/)  
-  [Netgen (netlist comparison, LVS)](http://opencircuitdesign.com/netgen/)  
+  [Magic VLSI (layout)](https://opencircuitdesign.com/magic/)
+  [Netgen (netlist comparison, LVS)](https://opencircuitdesign.com/netgen/)
   [Skywater130 PDK (Process Design Kit)](https://skywater-pdk.readthedocs.io/en/main/)
 
 
