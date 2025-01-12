@@ -1,6 +1,6 @@
 ---
-title: PLL - Charge Pump Design Part 1
-date: 2024-11-20
+title: PLL - Charge Pump Design Part 2
+date: 2024-11-23
 categories: [Analog Design, PLL, CP]
 toc: true
 ---

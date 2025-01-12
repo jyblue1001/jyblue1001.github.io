@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "PLL - Design Parameters Part 2: Loop Filter"
-date: 2024-11-15
+date: 2024-11-10
 categories: [Analog Design, PLL, Loop Filter]
 toc: true
 ---

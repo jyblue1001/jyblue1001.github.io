@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "PLL - Phase Frequency Detector Design"
-date: 2024-11-20
-categories: [Analog Design, PFD]
+date: 2024-11-15
+categories: [Analog Design, PLL, PFD]
 toc: true
 ---
 

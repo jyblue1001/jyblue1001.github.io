@@ -4,7 +4,6 @@ date: 2024-11-01 10:00:00 +0000
 categories: [Analog Design, PLL]
 tags: [PLL, skywater130, OSIC, analog-design]
 description: "Detailed log of designing a 2.4 GHz Phased Locked Loop using Skywater130 PDK with open-source tools, covering every step, mistake, and learning."
-pin: true
 comments: true
 ---
 

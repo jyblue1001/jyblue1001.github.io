@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "PLL Introduction"
-date: 2024-11-01
+date: 2024-11-02
 categories: [Analog Design, PLL]
 toc: true
 comments: true

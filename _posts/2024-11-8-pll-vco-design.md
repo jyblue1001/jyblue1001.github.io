@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "PLL - Voltage Controlled Oscillator Design"
-date: 2024-11-10
-categories: [Analog Design, VCO]
+date: 2024-11-8
+categories: [Analog Design, PLL, VCO]
 toc: true
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: PLL - Design Parameters Part 1 - Initial Configuration
-date: 2024-11-18 12:00:00 +0000
+date: 2024-11-5 12:00:00 +0000
 categories: [AnalogDesign, PLL]
 tags: [PLL, loop filter, control theory]
 description: "A detailed walkthrough of designing a 3rd order PLL with a 2nd order loop filter, including design parameter considerations and initial setup."
