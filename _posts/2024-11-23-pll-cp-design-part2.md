@@ -99,8 +99,8 @@ This is also the reason why in essence the node voltage X could not exactly reac
 #### **2.2. Transistor Size Reasoning**  
 
 <br>
-<a id="table1"></a>
-<table style="border-collapse: collapse; width: 100%; text-align: center;">
+
+<table id="table1" style="border-collapse: collapse; width: 100%; text-align: center;">
   <thead>
     <tr style="border-top: 3px solid black; border-bottom: 3px solid black;">
       <th style="border: 1px solid black; padding: 8px; border-left: 3px solid black; border-right: 3px solid black">Transistor<br>(Superset)</th>
@@ -222,8 +222,8 @@ As we have discussed, the current sourcing operation is interdependent between i
 
 To observe how the operation varies when sized differently, [table 2](#table2) shows the results.  
 
-<a id="table2"></a>
-<table style="border-collapse: collapse; width: 100%; text-align: center; border: 3px solid black;">
+<table id="table2" style="border-collapse: collapse; width: 100%; text-align: center;">
+black;">
   <tr>
     <td style="border: 2px solid black; padding: 3px;">
       <img src="{{site.url}}/images/pll_cp_design/part2/2_015_1_015.png" alt="Graph 1" style="width: 100%; max-width: 200px;">
@@ -367,8 +367,8 @@ Moving on to the actual design. We develop the simplest rail-to-rail amplifiers 
 [Fig.9](#fig9) is the proposed OPAMP in this CP. Its first stage consists of NMOS and PMOS differential amplifiers with active current mirror load, with current bias from the M13, M11, and R1 branch. The second stage has a PMOS output transistor succeeding the NMOS input stage, combined with its reciprocal pair into a single branch. Note that this is not the most trustworthy OPAMP but get the job done, and [table 3](#table3) shows the detailed size configurations.  
 
 <br>
-<a id="table3"></a>
-<table style="border-collapse: collapse; width: 100%; text-align: center;">
+
+<table id="table3" style="border-collapse: collapse; width: 100%; text-align: center;">
   <thead>
     <tr style="border-top: 3px solid black; border-bottom: 3px solid black;">
       <th style="border: 1px solid black; padding: 5px; border-left: 3px solid black; border-right: 3px solid black">Transistor<br>(Superset)</th>
@@ -527,8 +527,7 @@ The capacitance for the miller compensation could be derived through direct anal
 
 <br>
 
-<a id="table4"></a>
-<table style="border-collapse: collapse; width: 100%; text-align: center;">
+<table id="table4" style="border-collapse: collapse; width: 100%; text-align: center;">
   <thead>
     <tr style="border-top: 3px solid black; border-bottom: 3px solid black;">
       <th style="border: 1px solid black; padding: 3px; border-right: 3px solid black; border-left: 3px solid black;">SPECS \ CASES</th>
