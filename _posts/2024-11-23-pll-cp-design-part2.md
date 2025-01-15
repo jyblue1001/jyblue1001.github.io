@@ -15,7 +15,7 @@ math: true
    - [OPAMP Analysis](#31-opamp-analysis)
    - [Testbench Considerations](#32-testbench-considerations)
    - [Simulation Results](#33-simulation-results)
-4. [Design Analysis](#4-Design-analysis)
+4. [Design Analysis](#4-design-analysis)
    - [Evaluation of Conditions](#41-evaluation-of-conditions)
    - [Charge Pump Dead Zone](#42-charge-pump-dead-zone)
 
@@ -27,8 +27,7 @@ However, this effect of channel length modulation could be mitigated by using op
 
 The implementation and the simulation configurations follow as shown below.
 
-<a id="fig1"></a>
-<div style="text-align: center;">
+<div id="fig1" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/topology_with_loop_notation.png" 
        alt="topology_with_loop_notation" 
        style="width:100%; display: block; margin: auto;" />
@@ -43,8 +42,7 @@ As we know, if an OPAMP has a high gain, it has the ability to equalize its two 
 
 ---
 
-<a id="fig2"></a>
-<div style="text-align: center;">
+<div id="fig2" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/topology_with_FB_notation.png" alt="topology_with_FB_notation" style="width:150%; display: block; margin: auto;" />
   <p><strong>Figure 2</strong></p>
 </div>
@@ -55,28 +53,25 @@ In [fig.2](#fig2), shows the theoretical CP Loop 1, and Loop 2 behavior of negat
 
 ## **2. DC Analysis**
 
-#### **2.1. Detailed topology and operation details**
+#### **2.1. Topology and Operation Details Regarding DC analysis**
 
 The proposed topology is shown in [fig.3](#fig3). The design of the OPAMP will be elaborated in step.2 because its spec requires insights in transient operations. Until then, we assume that the OPAMP has high-gain and therefore the negative-feedback loop keeps its two input the same.
 
-<a id="fig3"></a>
-<div style="text-align: center;">
+<div id="fig3" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/dc_sweep_simulation_schematic.png" alt="dc_sweep_simulation_schematic" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 3</strong></p>
 </div>
 
 <br>
 
-<a id="fig4"></a>
-<div style="text-align: center;">
+<div id="fig4" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/dc_sweep_simulation_spice.png" alt="dc_sweep_simulation_spice" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 4</strong></p>
 </div>
 
 The SPICE code for DC analysis is shown as [fig.4](#fig4), and its result is [fig.5](#fig5).  
 
-<a id="fig5"></a>
-<div style="text-align: center;">
+<div id="fig5" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/current_mistmatches.png" alt="current_mistmatches" style="width:80%; display: block; margin: auto;" />
   <p><strong>Figure 5</strong></p>
 </div>
@@ -89,8 +84,7 @@ For M3, it has fixed gate voltage from the ideal current source with its gate di
 To further examine the voltage-varying operation in node X, we need to discuss M2. As V_CP voltage changes, so does the voltage for node X. To hold this behavior the high gain OPAMP balances the gate of M2 so that node X which is the drain node for “both” M2 and M3 operates and sustains an appropriate drain voltage to mirror 100uA from the ideal current source. This indicates that the common node X of NMOS and PMOS makes them interdependent.  
 Moving on, as node voltage X falls near GND, it pushes M3 to deep triode region, making it a mere On-resistor. The following situation could be explained through an example as [fig.6](#fig6). When this happens, as node X goes towards GND, and M3 holds resistance such as 5000 ohms. It could only flow 20uA amount of current through the branch, which is far less than 100uA. Thus, to match this decreasing current behavior, the OPAMP increases its output voltage near the threshold voltage.  
 
-<a id="fig6"></a>
-<div style="text-align: center;">
+<div id="fig6" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/m3_example.png" alt="m3_example" style="width:70%; display: block; margin: auto;" />
   <p><strong>Figure 6</strong></p>
 </div>
@@ -347,16 +341,14 @@ This is because in actual simulations, the output signal of the CP will be shown
 The fourth factor was an unexpected priority. The output impedance, or to be more accurate, the capacitance of the output node had to be brought into scope. This was because the output capacitance from the OPAMP 2nd stage and the capacitance of M2 & M4 exacerbated the operation of the CP. Those created unwanted ripples, especially in the first (Slower F_VCO) and third (F_VCO same speed) conditions.  
 <br>
 
-<a id="fig7"></a>
-<div style="text-align: center;">
+<div id="fig7" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/topology2_condition1.png" alt="topology2_condition1" style="width:80%; display: block; margin: auto;" />
   <p><strong>Figure 7. Acutal Transient Response</strong></p>
 </div>
 
 <br>
 
-<a id="fig8"></a>
-<div style="text-align: center;">
+<div id="fig8" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/effect_of_c2.png" alt="effect_of_c2" style="width:80%; display: block; margin: auto;" />
   <p><strong>Figure 8. <a href="#reference-2">Figure 7.48 from [2]</a></strong></p>
 </div>
@@ -365,8 +357,7 @@ The fourth factor was an unexpected priority. The output impedance, or to be mor
 
 Moving on to the actual design. We develop the simplest rail-to-rail amplifiers as a starting point.  
 
-<a id="fig9"></a>
-<div style="text-align: center;">
+<div id="fig9" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/opamp_basis_simulation_schematic.png" alt="opamp_basis_simulation_schematic" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 9. OPAMP Basis Simulation Schematic</strong></p>
 </div>
@@ -478,8 +469,7 @@ Moving on to the actual design. We develop the simplest rail-to-rail amplifiers 
 
 <br>
 
-<a id="fig10"></a>
-<div style="text-align: center;">
+<div id="fig10" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/opamp_basis_simulation_spice.png" 
          alt="opamp_basis_simulation_spice" 
@@ -509,8 +499,7 @@ The capacitance for the miller compensation could be derived through direct anal
 
 <br>
 
-<a id="fig11"></a>
-<div style="text-align: center;">
+<div id="fig11" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/opamp1_topology.png" 
          alt="opamp1_topology" 
@@ -524,8 +513,7 @@ The capacitance for the miller compensation could be derived through direct anal
 
 <br>
 
-<a id="fig12"></a>
-<div style="text-align: center;">
+<div id="fig12" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/opamp2_bode_plot.png" 
          alt="opamp2_bode_plot" 
@@ -580,16 +568,14 @@ The capacitance for the miller compensation could be derived through direct anal
 
 <br>
 
-<a id="fig13"></a>
-<div style="text-align: center;">
+<div id="fig13" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/transient_simulation_schematic.png" alt="transient_simulation_schematic" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 13. Transient Simulation Schematic</strong></p>
 </div>
 
 <br>
 
-<a id="fig14"></a>
-<div style="text-align: center;">
+<div id="fig14" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/transient_simulation_spice.png" alt="transient_simulation_spice" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 14. Transient Simulation SPICE</strong></p>
 </div>
@@ -602,16 +588,17 @@ The testbench is similar to the previous post.
 
 #### **3.3. Simulation Results**
 
-We test the transient simulation by sorting three cases “Case 1”, “Case 2”, and “Case 3”. The only different component in those cases is the OPAMP, which is denoted in [table 4](#table 4). Then, like the previous post, we examine all three conditions for each case. The 1st condition (F_REF slower than F_VCO), 2nd condition (F_REF faster than F_VCO), and 3rd condition.  
+We test the transient simulation by sorting three cases “Case 1”, “Case 2”, and “Case 3”. The only different component in those cases is the OPAMP, which is denoted in [table 4](#table4). Then, like the previous post, we examine all three conditions for each case. The 1st condition (F_REF slower than F_VCO), 2nd condition (F_REF faster than F_VCO), and 3rd condition.  
 
 <br>
 
-##### Case 1: OPAMP 1  
+<div style="text-align: left; font-size: 20px;">
+  Case 1: OPAMP 1
+</div>
 
 <span style="color: blue;">1st condition (F_REF slower than F_VCO)</span>  
 
-<a id="fig15"></a>
-<div style="text-align: center;">
+<div id="fig15" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case1_condition1.png" 
          alt="case1_condition1" 
@@ -627,8 +614,7 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <span style="color: blue;">2nd condition (F_REF faster than F_VCO)</span>  
 
-<a id="fig16"></a>
-<div style="text-align: center;">
+<div id="fig16" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case1_condition2.png" 
          alt="case1_condition2" 
@@ -644,8 +630,7 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <span style="color: blue;">3rd condition (F_REF same as F_VCO)</span>  
 
-<a id="fig17"></a>
-<div style="text-align: center;">
+<div id="fig17" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case1_condition3.png" 
          alt="case1_condition3" 
@@ -659,12 +644,13 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <br>
 
-##### Case 2: OPAMP 1  
+<div style="text-align: left; font-size: 20px;">
+  Case 2: OPAMP 2
+</div>
 
 <span style="color: blue;">1st condition (F_REF slower than F_VCO)</span>  
 
-<a id="fig18"></a>
-<div style="text-align: center;">
+<div id="fig18" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case2_condition1.png" 
          alt="case2_condition1" 
@@ -680,8 +666,7 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <span style="color: blue;">2nd condition (F_REF faster than F_VCO)</span>  
 
-<a id="fig19"></a>
-<div style="text-align: center;">
+<div id="fig19" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case2_condition2.png" 
          alt="case2_condition2" 
@@ -697,8 +682,7 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <span style="color: blue;">3rd condition (F_REF same as F_VCO)</span>  
 
-<a id="fig20"></a>
-<div style="text-align: center;">
+<div id="fig20" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case2_condition3.png" 
          alt="case2_condition3" 
@@ -712,12 +696,13 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <br>
 
-##### Case 3: OPAMP 1  
+<div style="text-align: left; font-size: 20px;">
+  Case 3: OPAMP 1
+</div>
 
 <span style="color: blue;">1st condition (F_REF slower than F_VCO)</span>  
 
-<a id="fig21"></a>
-<div style="text-align: center;">
+<div id="fig21" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case3_condition1.png" 
          alt="case3_condition1" 
@@ -733,8 +718,7 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <span style="color: blue;">2nd condition (F_REF faster than F_VCO)</span>  
 
-<a id="fig22"></a>
-<div style="text-align: center;">
+<div id="fig22" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case3_condition2.png" 
          alt="case3_condition2" 
@@ -750,8 +734,7 @@ We test the transient simulation by sorting three cases “Case 1”, “Case 2�
 
 <span style="color: blue;">3rd condition (F_REF same as F_VCO)</span>  
 
-<a id="fig23"></a>
-<div style="text-align: center;">
+<div id="fig23" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/case3_condition3.png" 
          alt="case3_condition3" 
@@ -783,9 +766,9 @@ The first conditions require further explanation for comprehension. As shown in 
 Also, all cases show that the CP experiences a sudden surge in node “X” after the first clock. Such behavior occurs from node “X” being non-zero due to “no-convergence to zero”. During the first clock, the negative and positive feedback operate to match the two differential inputs. However, the first clock abruptly ends after 24ns, and the OPAMP is only left with negative feedback with the two differential input node voltages even far apart from the initial status. Thus, the negative feedback loop of the OPAMP lowers its output voltage, which raises the node voltage of X due to the M2 CS stage. Therefore, the CP experiences a sudden surge in the X node.
 <br><br>
 
-Second, the third conditions answer the C1, C2 size reasoning back from table.1. It would look like fig.24 in the third condition without the capacitors. 
+Second, the third conditions answer the C1, C2 size reasoning back from table.1. It would look like [fig.24](#fig24) in the third condition without the capacitors. 
 
-<div style="text-align: center;">
+<div id="fig24" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/current_before_ff_cap_closeup.png" 
          alt="current_before_ff_cap_closeup" 
@@ -801,7 +784,7 @@ Second, the third conditions answer the C1, C2 size reasoning back from table.1.
 
 The values of C1 and C2 are decided so that both UP and DOWN pulses become rectangular signals of the same 100uA magnitude while outputting a constant output.
 
-<div style="text-align: center;">
+<div id="fig25" style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
     <img src="{{site.url}}/images/pll_cp_design/part2/current_after_ff_cap_closeup.png" 
          alt="current_after_ff_cap_closeup" 
@@ -817,14 +800,14 @@ The values of C1 and C2 are decided so that both UP and DOWN pulses become recta
 
 #### **4.2. Charge Pump Dead Zone**
 
-The dead-zone configuration for this CP is the same as the previous post, and the results are shown in fig.26  
+The dead-zone configuration for this CP is the same as the previous post, and the results are shown in [fig.26](#fig26)  
 
 > [Dead-Zone Configuration]({{site.url}}/images/pll_cp_design/part1/dead_zone_spice.png)
 {: .prompt-info }
 
 <br>
 
-<div style="text-align: center;">
+<div id="fig26" style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part2/dead_zone.png" alt="dead_zone" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 26. Current VS. Delay Plot</strong></p>
 </div>
