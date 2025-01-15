@@ -4,6 +4,7 @@ date: 2024-11-5 12:00:00 +0000
 categories: [AnalogDesign, PLL]
 tags: [PLL, loop filter, control theory]
 description: "A detailed walkthrough of designing a 3rd order PLL with a 2nd order loop filter, including design parameter considerations and initial setup."
+math: true
 ---
 
 ## Target Architecture
@@ -33,12 +34,15 @@ As a rule of thumb, \(C2\) is normally set to 0.1~0.2 of the value of \(C1\).
 ## Transfer Function
 We start with this equation, which is the transfer function of the PLL, assuming \(K_vco\) is linear for now:
 
-<img src="{{site.url}}/images/pll_transfer_function.png" style="display: block; margin: auto;" alt="Equation showing the PLL transfer function" />
+<div style="text-align: center; font-size: 24px;">
+   $ H\left(s\right)=\frac{\frac{I_p}{2\pi}(R_1+\frac{1}{C_1s})\ast\frac{K_{VCO}}{s}}{1+\frac{I_p}{2\pi}(R_1+\frac{1}{C_1s})\ast\frac{K_{VCO}}{s}\ast\frac{1}{M}} $
+</div>
 
 Simplified:
 
-<img src="{{site.url}}/images/simplified_pll_transfer_function.png" style="display: block; margin: auto;" alt="Simplified PLL transfer function equation" />
-
+<div style="text-align: center; font-size: 24px;">
+   $ H\left(s\right)=\frac{\frac{I_pK_{VCO}}{2\pi C_1}\ast(R_1C_1s+1)}{s^2+{\frac{I_p}{2\pi M}}{K_{VCO}R_1s}+\frac{I_pK_{VCO}}{2\pi C_1M}} $
+</div>
 
 ### Design Parameters
 The design parameters are as follows:

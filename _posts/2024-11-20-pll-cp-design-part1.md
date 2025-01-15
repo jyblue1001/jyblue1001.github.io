@@ -5,7 +5,7 @@ categories: [Analog Design, PLL, CP]
 toc: true
 ---
 
-# Table of Content
+# Table of Contents
 1. [Concept of the proposed topology](#1-concept-of-the-proposed-topology)
 2. [DC Analysis](#2-dc-analysis)
 3. [Transient Analysis](#3-transient-analysis)
@@ -14,10 +14,14 @@ toc: true
 4. [Design Issues](#4-design-issues) 
    - [Large Transistors](#41-large-transistors)
    - [Non-Linear Charge Pump](#42-non-linear-charge-pump)
-   
+
+We now begin our design in charge pumps (CP). In this section, I divided the topics into two posts. This post presents the first CP design in the simplest topology but with limitations. The next post will propose the second CP that provides solutions to the first design while designed in nanoscale topology.
+
+When designing the CP, there are two priorities. First, the design must guarantee that it supplies 100uA along the V_out DC sweep among the operating V_CONT range (0V ~ 1.8V). Second, the actual transient response of the charge pump must be inspected.
+
 ## **1. Concept of the Proposed Topology**
 
-The implementation and the simulation configurations follow as shown below.
+Beginning the analysis of the first CP design, the topology is shown below.
 
 <div style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part1/topology1.png" alt="topology1" style="width:100%; display: block; margin: auto;" />
@@ -30,7 +34,7 @@ In fig.1, M1~M6 are the pulse inverting stages for charge pump (CP) PMOS input, 
 
 To mitigate that effect, M9, M10 are added as pass-gates for the non-inverting stage. Compared to the inverters, however, this pass-gate is comprised of mismatch due to large parasitic capacitance. This could be resolved to some extent by placing it in the middle of two inverters as fig.1.
 
-For size considerations, the pulse inverting and non-inverting stages (M1~M12) are implemented in the smallest dimensions possible, so they do not suffer from excessive parasitic capacitance from the device. This concept is also applied to the CP input PMOS and NMOS (M13~M14) so their impedance does not hinder the loop filter components. However, these two transistors were not pushed to their minimum size limit (PMOS [W:0.86um, W:0.15um], NMOS [W:0.43um, W:0.15um]), because such configuration could bring current mismatch.
+For size considerations, the pulse inverting and non-inverting stages (M1~M12) are implemented in the smallest dimensions possible, so they do not suffer from excessive parasitic capacitance from the device. This concept is also applied to the CP input PMOS and NMOS (M13~M14) so their impedance does not hinder the loop filter components. However, these two transistors were not pushed to their minimum size limit (PMOS [W:0.86um, L:0.15um], NMOS [W:0.43um, L:0.15um]), because such configuration could bring current mismatch.
 
 M15~M17 are the PMOS current mirror stages and M18~M21 are the NMOS current mirror stages. For size considerations, they are implemented in big dimensions so that the role of current mirroring is not degraded due to channel length modulation.
 
