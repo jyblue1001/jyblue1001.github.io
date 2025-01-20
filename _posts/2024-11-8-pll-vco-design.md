@@ -4,6 +4,7 @@ title: "PLL - Voltage Controlled Oscillator Design"
 date: 2024-11-8
 categories: [Analog Design, PLL, VCO]
 toc: true
+math: true
 ---
 
 ## Voltage Controlled Oscillator (VCO) Design Part 1
@@ -34,7 +35,7 @@ We begin with the simplest design, shown in **Figure 1**, and **Figure 2** expli
 </div>
 
 <div style="text-align: center;">
-  <img src="{{site.url}}/images/pll_vco_design/figure2_vco_funcitonality.png" alt="VCO Functionality" style="width:50%; display: block; margin: auto;" />
+  <img src="{{site.url}}/images/pll_vco_design/figure2_vco_functionality.png" alt="VCO Functionality" style="width:50%; display: block; margin: auto;" />
   <p><strong>Figure 2 - VCO Functionality</strong></p>
 </div>
 
@@ -196,7 +197,7 @@ The process is time-consuming but results in the desired frequency response:
 However, there are actual design considerations that need to be taken into account.  
 Looking at **Figure 11.a**, our VCO’s oscillation relies on the parasitic capacitances in each inverter stage. Also, the VCO only has the minimum three inverter stages, which makes it susceptible to additional parasitic capacitances.
 
-The actual problem arises when the frequency divider is connected to the VCO. In **Figure 12**, we connected our VCO with the “divide-by-2” frequency divider (FD). The actual FD design will be covered later on.
+The actual problem arises when the frequency divider is connected to the VCO. In **Figure 12**, we connected our VCO with the “divide-by-120” frequency divider (FD). The actual FD design will be covered later on.
 
 <div style="text-align: center;">
   <img src="{{site.url}}/images/pll_vco_design/vco_frequency_divider.png" alt="Frequency Divider Connected to VCO" style="width:100%; display: block; margin: auto;" />
@@ -230,17 +231,16 @@ After that, our new Kvco plot will look like **Figure 14**.
 
 ## Final Kvco Calculation
 
-Calculating the exact frequency from the raw files, the Kvco value is **309 MHz/V**, and this will be our final Kvco value.
+Calculating the exact frequency from the raw files, the Kvco value is **362 MHz/V**, and this will be our final Kvco value.
 
-<div style="text-align: center;">
-  <img src="{{site.url}}/images/pll_vco_design/final_kvco_value.png" alt="Final Kvco Value Calculation" style="width:100%; display: block; margin: auto;" />
+<br>
+
+<div style="text-align: center; font-size: 30px;">
+  $ \frac{\frac{1}{377.59\times{10^{-6}}}-\frac{1}{500.73\times{10^{-6}}}}{\scriptscriptstyle 1.8-0.0} = {\scriptstyle 362 \, \mathrm{MHz/V}} $
 </div>
 
-For the steepest part of the Kvco plot, the value is **906 MHz/V**.
+<br>
 
-<div style="text-align: center;">
-  <img src="{{site.url}}/images/pll_vco_design/final_kvco_value_max.png" alt="Steepest Kvco Value Calculation" style="width:100%; display: block; margin: auto;" />
-</div>
 
 ---
 
