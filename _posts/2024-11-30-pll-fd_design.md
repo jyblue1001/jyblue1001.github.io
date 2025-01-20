@@ -256,6 +256,10 @@ One thing to note is that both TSPC FFs have inverting outputs, the reason for t
 
 ### **3.1. Divide-by-2 Design**
 
+#### **3.1.1. Design Simulation**
+
+<br>
+
 ##### **Comp SW FF**
 
 <br>
@@ -310,7 +314,7 @@ To make a Div2, we readily connect the “inverting” output to the input as fi
 
 ---
 
-### **3.2. Divide-by-2 Design**
+### **3.2. Divide-by-3 Design**
 
 #### **3.2.1. Concept Development**
 
@@ -359,7 +363,7 @@ Another thing to note is the duty cycle of this Div3 FD, which is shown in the w
 
 ---
 
-#### **3.2.2. Acutal Development**
+#### **3.2.2. Actual Development**
 
 ##### **Comp SW FF**
 
@@ -648,7 +652,7 @@ We can see that for the case of the Ratioed FF, the division ratio is $\frac{49.
 
 ---
 
-### **4.2. Design Simulation**
+### **4.2. Impact of the Divider**
 <br>
 
 From fig. 7, 8, 9, 10, and 52, it was observed that parasitic capacitance poses a significant issue, as it distorts the VCO output signal when the divider is connected. This issue may be suppressed if the dimensions of the MOSFETs get smaller, but [W_n: 0.43um, L: 0.15um] is the lowest limit. Thus, we cannot derive a solution in this direction.  
