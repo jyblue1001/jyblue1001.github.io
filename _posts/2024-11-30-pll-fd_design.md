@@ -363,7 +363,7 @@ Another thing to note is the duty cycle of this Div3 FD, which is shown in the w
 
 ---
 
-#### **3.2.2. Actual Development**
+#### **3.2.2. Design Simulation**
 
 ##### **Comp SW FF**
 
@@ -470,7 +470,7 @@ One interesting observation is that the AND with an OR input can be made with NA
 
 ---
 
-#### **3.3.2. Acutal Design**
+#### **3.3.2. Design Simulation**
 <br>
 
 ##### **Comp SW FF**
