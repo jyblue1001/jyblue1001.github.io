@@ -116,7 +116,7 @@ By this, the two bandwidths are close in values, which means that even if we cho
   </div>
 <br>
 
-Therefore the value of C₁ = 8.24pF, and the value of C₂ taken as 1/5, which will be roughly C₂ = 1.68pF.
+Therefore the value of C₁ = 8.42pF, and the value of C₂ taken as 1/5, which will be roughly C₂ = 1.68pF.
 
 Configuring C₁, we can move on to the configuration of the R₁ value. As we set the damping factor (ζ) as 1, the calculation starts from Eq.2 as below.
 

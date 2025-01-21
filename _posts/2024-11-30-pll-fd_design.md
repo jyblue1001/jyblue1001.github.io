@@ -33,25 +33,25 @@ math: true
 
 <br>
 
-## **Introduction**
+# **Introduction**
 
 Now we begin the frequency divider (FD) design. We first examine the types of latches, which can be broadly classified into two categories: static and dynamic. After discussing the traits of these two latches, we then explain why dynamic latches are chosen over static latches. In the third section, we proceed with the actual design of our divide-by-120 FD in two different dynamic FFs. The design process will provide useful tips and highlight key design considerations throughout. Finally, we simulate the divide-by-120 FD in two FFs and cover its limitations. Then derive a new FF that consists of the advantage of prior FFs and conclude with the final divide-by-120 FD.
 
 > To keep things concise, we note “divide-by-N FD” as “DivN”, further on.
 {: .prompt-info }
 
-## **1.	Latch Styles**
-### **1.1.	Static and Dynamic Latches**
+# **1.	Latch Styles**
+## **1.1.	Static and Dynamic Latches**
 
-##### How to divide a signal
+#### **How to divide a signal**
 
 Now we begin the frequency divider design. How do we divide frequencies? For a given frequency, if we were to “hold” the signal and release it at the harmonic period of that frequency, we can divide the frequency. To do that, we need to make a circuit which operation runs on the input signal’s frequency. This behavior could be implemented by using latches, which could “hold” signals. Then, the concept could be advanced to Flip-Flops (FF), which are series of latches that could be operated by an “enable signal”. By setting the enable signal to the input frequency of interest, we can derive a frequency divider.
 
 <br>
 
-##### Latch functionality 
+#### **Latch functionality**
 
-First, the static latches utilize back-to-back amplifying stages to store states. These circuits store the value by locking them in operating points, which inevitably demands the circuits to be powered on, frequently consuming power. Moreover, their topology naturally requires more transistors for its operation.  
+<strong><span style="font-size: 20px;">First</span></strong>, the static latches utilize back-to-back amplifying stages to store states. These circuits store the value by locking them in operating points, which inevitably demands the circuits to be powered on, frequently consuming power. Moreover, their topology naturally requires more transistors for its operation.  
 
 <div id="fig1" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/static_latch.png" alt="static_latch" style="width:50%; display: block; margin: auto;" />
@@ -60,7 +60,7 @@ First, the static latches utilize back-to-back amplifying stages to store states
 
 <br>
 
-Second, there are dynamic latches. These latches use their device capacitances to store value. They can be implemented with fewer transistors than static latches but may lose their states if the clock frequency is not sufficiently high.  
+<strong><span style="font-size: 20px;">Second</span></strong>, there are dynamic latches. These latches use their device capacitances to store value. They can be implemented with fewer transistors than static latches but may lose their states if the clock frequency is not sufficiently high.  
 
 <div id="fig2" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/dynamic_latch.png" alt="dynamic_latch" style="width:40%; display: block; margin: auto;" />
@@ -69,23 +69,23 @@ Second, there are dynamic latches. These latches use their device capacitances t
 
 <br><br>
 
-##### Purpose of the Design
+#### **Purpose of the Design**
 
 In this design, we target dynamic latches due to their advantages in low power consumption and to test how these dynamic latches behave in GHz topology.
 
 <br>
 
 ---
-## **2. Dynamic Latch**
+# **2. Dynamic Latch**
 
-### **2.1.	Proposed Latch**
+## **2.1.	Proposed Latch**
 
-Among various types of dynamic latches noted in [2], fig.3 and fig.5 are the proposed topologies. For convenience, we will note them as “Comp SW FF” and “Ratioed TSPC FF”, in short, respectively.
+Among various types of dynamic latches noted in [2], [fig.3](#fig3) and [fig.5](#fig) are the proposed topologies. For convenience, we will note them as “Comp SW FF” and “Ratioed TSPC FF”, in short, respectively.
 
 > TIP: TSPC → True Single Phased Clock .
 {: .prompt-tip }
 
-##### **Comp SW FF**
+#### **Comp SW FF**
 
 <div id="fig3" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff.png" 
@@ -110,11 +110,11 @@ Among various types of dynamic latches noted in [2], fig.3 and fig.5 are the pro
 
 <br>
 
-Comp SW FF can be implemented “unratioed”, meaning there is no need for size considerations, and we could dive into the smallest dimensions, which is [W: 0.43um, L: 0.15um]. This design was originally a TSPC FF seen in fig.4, then later improved as fig.3 with complementary clocks to ensure faster operations in higher frequencies.
+Comp SW FF can be implemented “unratioed”, meaning there is no need for size considerations, and we could dive into the smallest dimensions, which is [W: 0.43um, L: 0.15um]. This design was originally a TSPC FF seen in [fig.4](#fig4), then later improved as [fig.3](#fig3) with complementary clocks to ensure faster operations in higher frequencies.
 
 <br>
 
-##### **Ratioed TSPC FF**
+#### **Ratioed TSPC FF**
 
 <div id="fig5" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff.png" 
@@ -136,11 +136,11 @@ While Ratioed TSPC FF seems like an intriguing option due to its fewer number of
 
 <br>
 
-### **2.2.	Design Simulation**
+## **2.2.	Design Simulation**
 
-##### **Comp SW FF**
+#### **Comp SW FF**
 
-Fig.6 is the actual implementation of Comp SW FF, fig.12 is the SPICE, and fig.13 shows the waveforms.
+[Fig.6](#fig6) is the actual implementation of Comp SW FF, [fig.12](#fig12) is the SPICE, and [fig.13](#fig13) shows the waveforms.
 
 <div id="fig6" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_schematic.png" alt="comp_sw_ff_schematic" style="width:100%; display: block; margin: auto;" />
@@ -149,7 +149,7 @@ Fig.6 is the actual implementation of Comp SW FF, fig.12 is the SPICE, and fig.1
 
 <br>
 
-One thing to note is the complementary CLK generating circuit in fig.6. The development of such design develops from the concept in fig.7.
+One thing to note is the complementary CLK generating circuit in [fig.6](#fig6). The development of such design develops from the concept in [fig.7](#fig7).
 
 <div id="fig7" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_clk_generating_circuit_1.png" alt="comp_clk_generating_circuit_1" style="width:60%; display: block; margin: auto;" />
@@ -172,7 +172,7 @@ The SPICE code for DC analysis is shown as [fig.4](#fig4), and its result is [fi
 
 <br>
 
-Fig,8 shows the outcome where the PLL is built with Comp_sw_FF FD with fig.7 configurated complementary clock circuits. We can see the rising waveform is different between the periods of the signals. Therefore, fails in matching a 2.4GHz.
+[Fig.8](#fig8) shows the outcome where the PLL is built with Comp_sw_FF FD with [fig.7](#fig7) configurated complementary clock circuits. We can see the rising waveform is different between the periods of the signals. Therefore, fails in matching a 2.4GHz.
 
 <div id="fig9" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_clk_generating_circuit_2.png" alt="comp_clk_generating_circuit_2" style="width:65%; display: block; margin: auto;" />
@@ -197,7 +197,7 @@ We try to mitigate such traits with the addition of inverters to guard the VCO f
 
 <br>
 
-In fig.11, we now guard both nodes of the pass-gate to suppress the parasitic capacitances. While this has disadvantages in delays, it has the best result in the simulation as in fig.13.
+In [fig.11](#fig11), we now guard both nodes of the pass-gate to suppress the parasitic capacitances. While this has disadvantages in delays, it has the best result in the simulation as in fig.13.
 
 <div id="fig12" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_spice.png" alt="comp_sw_ff_spice" style="width:45%; display: block; margin: auto;" />
@@ -215,7 +215,7 @@ In fig.11, we now guard both nodes of the pass-gate to suppress the parasitic ca
 
  We can see that Comp SW FF is actually a **Positive edge-triggered Flip-Flop with a single inverted output**.
 
-##### **Ratioed TSPC FF**
+#### **Ratioed TSPC FF**
 
 <div id="fig6" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_schematic.png" alt="ratioed_tspc_ff_schematic" style="width:100%; display: block; margin: auto;" />
@@ -238,9 +238,9 @@ In fig.11, we now guard both nodes of the pass-gate to suppress the parasitic ca
 
 <br>
 
-For the case of Ratioed TSPC FF, Fig.14 is the actual implementation, fig.15 is the SPICE, and fig.16 shows the waveforms. By analyzing fig.16, we can understand for the case of Ratioed TSPC FF, it is a **Negative edge-triggered Flip-Flop with a single inverted output**. 
+For the case of Ratioed TSPC FF, [fig.14](#fig14) is the actual implementation, [fig.15](#fig15) is the SPICE, and [fig.16](#fig16) shows the waveforms. By analyzing [fig.16](#fig16), we can understand for the case of Ratioed TSPC FF, it is a **Negative edge-triggered Flip-Flop with a single inverted output**. 
 
-One thing to note is that both TSPC FFs have inverting outputs, the reason for this could be that they all have three inverter stages. As for the Comp SW FF, [M1, M2, M2_c, M3], [M4, M5, M5_c, M6], [M7, M8] represent the three inverter stages, as shown in fig. 6. Regarding the Ratioed TSPC FF, [M1, M2, M3], [M4, M5], [M6, M7] correspond to the three inverter stages, as shown in fig. 14. This insight of treating FFs as a series of inverters is particularly beneficial when designing Div3 and Div5 components later in the post. We use a symbol such as fig.17, representing an FF with an inverting output.
+One thing to note is that both TSPC FFs have inverting outputs, the reason for this could be that they all have three inverter stages. As for the Comp SW FF, [M1, M2, M2_c, M3], [M4, M5, M5_c, M6], [M7, M8] represent the three inverter stages, as shown in [fig.6](#fig6). Regarding the Ratioed TSPC FF, [M1, M2, M3], [M4, M5], [M6, M7] correspond to the three inverter stages, as shown in [fig.14](#fig14). This insight of treating FFs as a series of inverters is particularly beneficial when designing Div3 and Div5 components later in the post. We use a symbol such as [fig.17](#fig17), representing an FF with an inverting output.
 
 <div id="fig17" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/inverting_output_ff_symbol.png" alt="inverting_output_ff_symbol" style="width:20%; display: block; margin: auto;" />
@@ -252,19 +252,19 @@ One thing to note is that both TSPC FFs have inverting outputs, the reason for t
 
 ---
 
-## **3.	Proposed Dividers and Design Consideration**
+# **3.	Proposed Dividers and Design Consideration**
 
-### **3.1. Divide-by-2 Design**
+## **3.1. Divide-by-2 Design**
 
-#### **3.1.1. Design Simulation**
-
-<br>
-
-##### **Comp SW FF**
+### **3.1.1. Design Simulation**
 
 <br>
 
-To make a Div2, we readily connect the “inverting” output to the input as fig.18 and fig.21. With the results illustrated in fig.20 and fig.23, the output is a signal with a period of 833ps, which is approximately $ \frac{1}{2} $ of 2.4GHz.
+#### **Comp SW FF**
+
+<br>
+
+To make a Div2, we readily connect the “inverting” output to the input as [fig.18](#fig18) and [fig.21](#fig21). With the results illustrated in [fig.20](#fig20) and [fig.23](#fig23), the output is a signal with a period of 833ps, which is approximately $ \frac{1}{2} $ of 2.4GHz.
 
 <br>
 
@@ -289,7 +289,7 @@ To make a Div2, we readily connect the “inverting” output to the input as fi
 
 <br>
 
-##### **Ratioed TSPC FF**
+#### **Ratioed TSPC FF**
 
 <div id="fig21" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_div2_schematic.png" alt="ratioed_tspc_ff_div2_schematic" style="width:90%; display: block; margin: auto;" />
@@ -314,11 +314,11 @@ To make a Div2, we readily connect the “inverting” output to the input as fi
 
 ---
 
-### **3.2. Divide-by-3 Design**
+## **3.2. Divide-by-3 Design**
 
-#### **3.2.1. Concept Development**
+### **3.2.1. Concept Development**
 
-Fig.24 is the proposed Div3 design from [2]. Unlike Fig. 17, this design features a non-inverting output. 
+[Fig.24](#fig24) is the proposed Div3 design from [2]. Unlike [fig.17](#fig17), this design features a non-inverting output. 
 
 <div id="fig24" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/div3_concept.png" alt="div3_concept" style="width:100%; display: block; margin: auto;" />
@@ -331,7 +331,7 @@ We change the FF to our configuration in then inspect how we can apply such an o
 
 <div id="fig25" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/div3_dev_process.png" alt="div3_dev_process" style="width:90%; display: block; margin: auto;" />
-  <p><strong><span style="font-size: 16px;"> Figure 25. Process of applying the logic of fig.24 with fig.17, with improvements</span></strong></p>
+  <p><strong><span style="font-size: 16px;"> Figure 25. Process of applying the logic of [fig.24](#fig24) with [fig.17](#fig17), with improvements</span></strong></p>
 </div>
 
 <br>
@@ -346,26 +346,26 @@ Fig.25 shows the process of developing our own Div3
 
 <br>
 
-##### **Hand-Evaluation of Div3**  
+#### **Hand-Evaluation of Div3**  
 
-Before the actual simulation of the FD, it is highly advised that the design be evaluated by hand. This is the best way for the designer to understand how logic works and if it matches our goal. Fig.26 presents an evaluation of the final Div3. However, it is recommended that each process step be manually evaluated individually, which I will leave as an exercise for the readers. A key starting point for those interested in attempting this would be setting the initial conditions for each node. To do this, select one node of interest and assign it an arbitrary value. This will allow the remaining node values to adjust according to the design’s logic configuration. If the design is correct, the circuit will produce a proper Div3 signal. Otherwise, it will converge to either a HIGH or LOW state.  
+Before the actual simulation of the FD, it is highly advised that the design be evaluated by hand. This is the best way for the designer to understand how logic works and if it matches our goal. [Fig.26](#fig26) presents an evaluation of the final Div3. However, it is recommended that each process step be manually evaluated individually, which I will leave as an exercise for the readers. A key starting point for those interested in attempting this would be setting the initial conditions for each node. To do this, select one node of interest and assign it an arbitrary value. This will allow the remaining node values to adjust according to the design’s logic configuration. If the design is correct, the circuit will produce a proper Div3 signal. Otherwise, it will converge to either a HIGH or LOW state.  
 <br>
 
-##### **Incorporation of a NAND Gate in the Flip-Flop (FF)**  
+#### **Incorporation of a NAND Gate in the Flip-Flop (FF)**  
 
-One thing to note in fig.25 is that we embedded a NAND into the FF. This is a legitimate approach because we agreed to develop the intuition that our TSPC FF is a series of three inverters. The key is to have three succeeding inverting stages grouped in the same clock. Even though we have a NAND instead of a NOT in fig.25, it still holds the purpose of carrying a state within its device capacitance.  
+One thing to note in [fig.25](#fig25) is that we embedded a NAND into the FF. This is a legitimate approach because we agreed to develop the intuition that our TSPC FF is a series of three inverters. The key is to have three succeeding inverting stages grouped in the same clock. Even though we have a NAND instead of a NOT in [fig.25](#fig25), it still holds the purpose of carrying a state within its device capacitance.  
 <br>
 
-##### **Duty Cycle Considerations**  
+#### **Duty Cycle Considerations**  
 
-Another thing to note is the duty cycle of this Div3 FD, which is shown in the waveforms in fig. 24 and 26 as 66.6%. To prove that the phase and frequency distinguishing functionality is irrelevant to the duty cycle, we recall back the PFD design post. In that post, we explained that our PFD operates as a positive edge-detecting component. This means the window of interest spans from one rising edge of the signal to the next. Consequently, the duty cycle does not impact the functionality of this PLL’s topology, provided that the divided frequency adheres to the expected period.  
+Another thing to note is the duty cycle of this Div3 FD, which is shown in the waveforms in [fig.24](#fig24) and [26](#fig26) as 66.6%. To prove that the phase and frequency distinguishing functionality is irrelevant to the duty cycle, we recall back the PFD design post. In that post, we explained that our PFD operates as a positive edge-detecting component. This means the window of interest spans from one rising edge of the signal to the next. Consequently, the duty cycle does not impact the functionality of this PLL’s topology, provided that the divided frequency adheres to the expected period.  
 <br>
 
 ---
 
-#### **3.2.2. Design Simulation**
+### **3.2.2. Design Simulation**
 
-##### **Comp SW FF**
+#### **Comp SW FF**
 
 <div id="fig27" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_div3_schematic.png" alt="comp_sw_ff_div3_schematic" style="width:90%; display: block; margin: auto;" />
@@ -390,7 +390,7 @@ Fig.27 is the transistor level Comp_sw_FF. Every NMOS and PMOS is sized [W: 0.43
 
 <br><br>
 
-##### **Ratioed TSPC FF**
+#### **Ratioed TSPC FF**
 
 <div id="fig30" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_div3_schematic.png" alt="ratioed_tspc_ff_div3_schematic" style="width:90%; display: block; margin: auto;" />
@@ -399,7 +399,7 @@ Fig.27 is the transistor level Comp_sw_FF. Every NMOS and PMOS is sized [W: 0.43
 
 <br>
 
-Like the prior, fig.30 is the transistor level Ratioed TSPC FF. Every NMOS and PMOS is sized [W: 0.43um, L: 0.15um] except for inverters and the pass-gates, which have PMOS as [W: 0.86um, L: 0.15um].  
+Like the prior, [fig.30](#fig30) is the transistor level Ratioed TSPC FF. Every NMOS and PMOS is sized [W: 0.43um, L: 0.15um] except for inverters and the pass-gates, which have PMOS as [W: 0.86um, L: 0.15um].  
 
 <div id="fig31" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_div3_spice.png" alt="ratioed_tspc_ff_div3_spice" style="width:50%; display: block; margin: auto;" />
@@ -415,13 +415,13 @@ Like the prior, fig.30 is the transistor level Ratioed TSPC FF. Every NMOS and P
 
 <br>
 
-Same as before, figure 32 shows the waveforms of fig.30, which outputs a 1.2511ns signal, that is, $ \frac{1}{3} $ of 2.4GHz.
+Same as before, [fig.32](#fig32) shows the waveforms of [fig.30](#fig30), which outputs a 1.2511ns signal, that is, $ \frac{1}{3} $ of 2.4GHz.
 
 ---
 
-### **3.3. Divide-by-5 Design**
+## **3.3. Divide-by-5 Design**
 
-#### **3.3.1. Concept Development**
+### **3.3.1. Concept Development**
 <br>
 
 To make a Div5, we introduce the concept of a Dual Modulus Prescaler.
@@ -455,7 +455,7 @@ A <span style="color:lightblue;">dual modulus</span> <span style="color:red;">pr
 
 <br>
 
-The dual modulus scaler, or the $\div$ 2/3 (Div2,3) circuit, can be designed as fig.33. In <a href="#reference-2" title="Go to Reference 2"> [2]</a>, it adopts an OR gate to implement the “switch between two division factors” function. Then, it could be advanced into a Div5 as shown in fig.34. 
+The dual modulus scaler, or the $\div$ 2/3 (Div2,3) circuit, can be designed as [fig.33](#fig33). In <a href="#reference-2" title="Go to Reference 2"> [2]</a>, it adopts an OR gate to implement the “switch between two division factors” function. Then, it could be advanced into a Div5 as shown in [fig.34](#fig34). 
 
 <div id="fig35" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/and_with_or_input.png" alt="and_with_or_input" style="width:90%; display: block; margin: auto;" />
@@ -464,16 +464,16 @@ The dual modulus scaler, or the $\div$ 2/3 (Div2,3) circuit, can be designed as 
 
 <br>
 
-Fig.35 shows how the AND & OR gates from fig.34 could be combined. If we manage to place the NOR component devices [M5, M2, M6, M4] near the rails, and NAND components [M1, M2, M3, M4] centered in the output node, it works as a “AND gate with OR input”.  
+[Fig.35](#fig35) shows how the AND & OR gates from [fig.34](#fig34) could be combined. If we manage to place the NOR component devices [M5, M2, M6, M4] near the rails, and NAND components [M1, M2, M3, M4] centered in the output node, it works as a “AND gate with OR input”.  
 <br>
 One interesting observation is that the AND with an OR input can be made with NAND with a NOR input. Combining two inverting-stage logic gates appears to nullify their respective NOT operations.
 
 ---
 
-#### **3.3.2. Design Simulation**
+### **3.3.2. Design Simulation**
 <br>
 
-##### **Comp SW FF**
+#### **Comp SW FF**
 
 <div id="fig36" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_div5_schematic.png" alt="comp_sw_ff_div5_schematic" style="width:100%; display: block; margin: auto;" />
@@ -496,11 +496,11 @@ One interesting observation is that the AND with an OR input can be made with NA
 
 <br>
 
-The vout signal in fig.38 shows a period of 2.0643ns, which is five times the period of a 2.4GHz signal.
+The vout signal in [fig.38](#fig38) shows a period of 2.0643ns, which is five times the period of a 2.4GHz signal.
 
 <br>
 
-##### **Ratioed TSPC FF**
+#### **Ratioed TSPC FF**
 
 <div id="fig39" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_div5_schematic.png" alt="ratioed_tspc_ff_div5_schematic" style="width:100%; display: block; margin: auto;" />
@@ -521,21 +521,21 @@ The vout signal in fig.38 shows a period of 2.0643ns, which is five times the pe
   <p><strong><span style="font-size: 16px;">Figure 41. Ratioed TSPC FF Div5 Waveform</span></strong></p>
 </div>
 
-The vout signal in fig.22 shows a period of 2.0861ns, which is also five times the period of a 2.4GHz signal.
+The vout signal in [fig.22](#fig22) shows a period of 2.0861ns, which is also five times the period of a 2.4GHz signal.
 
 Now, with all three components that compose the Div120. We move on to its design implementation.
 
 ---
 
-## **4. Divide-by-120 Design**
+# **4. Divide-by-120 Design**
 
-### **4.1. Design Simulation**
+## **4.1. Design Simulation**
 
 As we covered in the “PLL – Design parameters” post, 120 can be broken into $ 2^{3} \times 3 \times 5 $. Meaning, Div120 can be built by connecting three Div2s, one Div3, and one Div5.
 
 <br>
 
-##### **Comp SW FF**
+#### **Comp SW FF**
 
 <div id="fig42" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_div120_symbol.png" alt="comp_sw_ff_div120_symbol" style="width:100%; display: block; margin: auto;" />
@@ -544,7 +544,7 @@ As we covered in the “PLL – Design parameters” post, 120 can be broken int
 
 <br>
 
-For the Comp_sw_FF, the FD is implemented as fig.42, with the simulation setup like fig.44.
+For the Comp_sw_FF, the FD is implemented as [fig.42](#fig42), with the simulation setup like [fig.44](#fig44).
 
 <div id="fig43" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_div120_spice.png" alt="comp_sw_ff_div120_spice" style="width:100%; display: block; margin: auto;" />
@@ -560,7 +560,7 @@ For the Comp_sw_FF, the FD is implemented as fig.42, with the simulation setup l
 
 <br>
 
-The SPICE is written as fig.43, where the code is written similarly to SPICE for evaluating the Kvco in the VCO post. The code measures up to 120ns which covers at least one period of the divide-by-120 (20MHz = 50ns). 
+The SPICE is written as [fig.43](#fig43), where the code is written similarly to SPICE for evaluating the Kvco in the VCO post. The code measures up to 120ns which covers at least one period of the divide-by-120 (20MHz = 50ns). 
 We write the code as such because, as we briefly mentioned in the last part of the VCO post, the capacitance from the FD influences the VCO, degrading its operation speed. So, we need to change the aspect ratio of the MOSFETs in the ringed oscillator so that it meets our frequency of interest, 2.4GHz.
 
 <div id="fig45" style="text-align: center;">
@@ -570,7 +570,7 @@ We write the code as such because, as we briefly mentioned in the last part of t
 
 <br>
 
-After changing the size from [W_p: 0.86um, L_p: 0.27um, W_n: 0.43um, L_n: 0.27um] to [W_p: 1.0um, L_p: 0.19um, W_n: 0.50um, L_n: 0.19um] as shown in fig.45. It creates a Kvco plot as fig.46. 
+After changing the size from [W_p: 0.86um, L_p: 0.27um, W_n: 0.43um, L_n: 0.27um] to [W_p: 1.0um, L_p: 0.19um, W_n: 0.50um, L_n: 0.19um] as shown in [fig.45](#fig45). It creates a Kvco plot as [fig.46](#fig46). 
 
 <div id="fig46" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_ff_revised_vco_kvco.png" alt="comp_sw_ff_revised_vco_kvco" style="width:100%; display: block; margin: auto;" />
@@ -579,7 +579,7 @@ After changing the size from [W_p: 0.86um, L_p: 0.27um, W_n: 0.43um, L_n: 0.27um
 
 <br>
 
-With this revised VCO, the output frequency is $\frac{1}{400.71\times{10}^{-12}s} \approx \small{2.496} \scriptsize{GHz} $ for V_cont of 0.9V. When this goes through the FD, the period of the final signal is 48.177ns, as shown in fig.47. 
+With this revised VCO, the output frequency is $\frac{1}{400.71\times{10}^{-12}s} \approx \small{2.496} \scriptsize{GHz} $ for V_cont of 0.9V. When this goes through the FD, the period of the final signal is 48.177ns, as shown in [fig.47](#fig47). 
 
 <div id="fig47" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/comp_sw_revised_vco_output.png" 
@@ -598,7 +598,7 @@ $$ \frac{48.189\times{10}^{-9}}{400.71\times{10}^{-12}} = 120.26\ \ \approx 120 
 
 <br><br>
 
-##### **Ratioed TSPC FF**
+#### **Ratioed TSPC FF**
 
 <br>
 
@@ -609,7 +609,7 @@ $$ \frac{48.189\times{10}^{-9}}{400.71\times{10}^{-12}} = 120.26\ \ \approx 120 
 
 <br>
 
-For the Ratioed_FF, the FD is implemented as fig.48, and the simulation setup as fig.49. As explained above, the SPICE simulation is written similarly to serve the same purpose.
+For the Ratioed_FF, the FD is implemented as [fig.48](#fig48), and the simulation setup as [fig.49](#fig49). As explained above, the SPICE simulation is written similarly to serve the same purpose.
 
 
 <div id="fig49" style="text-align: center;">
@@ -626,7 +626,7 @@ For the Ratioed_FF, the FD is implemented as fig.48, and the simulation setup as
 
 <br>
 
-[W_p: 0.86um, L_p: 0.27um, W_n: 0.43um, L_n: 0.27um] to [W_p: 0.86um, L_p: 0.20um, W_n: 0.43um, L_n: 0.20um] as shown in fig.50. It creates a Kvco plot as fig.51. 
+[W_p: 0.86um, L_p: 0.27um, W_n: 0.43um, L_n: 0.27um] to [W_p: 0.86um, L_p: 0.20um, W_n: 0.43um, L_n: 0.20um] as shown in [fig.50](#fig50). It creates a Kvco plot as [fig.51](#fig51). 
 
 <div id="fig51" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_revised_vco_kvco.png" alt="ratioed_tspc_ff_revised_vco_kvco" style="width:100%; display: block; margin: auto;" />
@@ -648,14 +648,14 @@ With this revised VCO, the output frequency is $\frac{1}{409.76\times{10}^{-12}s
 </div>
 <br>
 
-We can see that for the case of the Ratioed FF, the division ratio is $\frac{49.775\times{10}^{-9}}{409.76\times{10}^{-12}} =\ \small{121.42} $, which is near 120. However, for those with a sharp eye, you can see that the VCO output signal in fig.52 is slightly distorted, as we first observed in fig.8.
+We can see that for the case of the Ratioed FF, the division ratio is $\frac{49.775\times{10}^{-9}}{409.76\times{10}^{-12}} =\ \small{121.42} $, which is near 120. However, for those with a sharp eye, you can see that the VCO output signal in [fig.52](#fig52) is slightly distorted, as we first observed in [fig.8](#fig8).
 
 ---
 
-### **4.2. Impact of the Divider**
+## **4.2. Impact of the Divider**
 <br>
 
-From fig. 7, 8, 9, 10, and 52, it was observed that parasitic capacitance poses a significant issue, as it distorts the VCO output signal when the divider is connected. This issue may be suppressed if the dimensions of the MOSFETs get smaller, but [W_n: 0.43um, L: 0.15um] is the lowest limit. Thus, we cannot derive a solution in this direction.  
+From fig. [7](#fig7), [8](#fig8), [9](#fig9), [10](#fig10), and [52](#fig52), it was observed that parasitic capacitance poses a significant issue, as it distorts the VCO output signal when the divider is connected. This issue may be suppressed if the dimensions of the MOSFETs get smaller, but [W_n: 0.43um, L: 0.15um] is the lowest limit. Thus, we cannot derive a solution in this direction.  
 <br>
 
 While the FD of Comp_sw_FF derives a solution from using inverters, it uses too many MOSFETs, even overwhelming the numbers used for FD design in divide-by-2. This leads to longer simulations because they vary proportionally to the number of devices, which is another inconvenience. Plus, the Comp_sw_FF topology introduces an additional disadvantage of delays from its complementary clock-generating stages.
@@ -663,7 +663,7 @@ While the FD of Comp_sw_FF derives a solution from using inverters, it uses too 
 
 ---
 
-### **4.3. Revised FF**
+## **4.3. Revised FF**
 <br>
 
 Instead, an alternative can be drawn from the strengths of both approaches. We could choose the Ratioed FF for its merit in fewer devices while shielding the VCO & FD connection as much as possible using inverters as in comp_sw_FF.  
@@ -691,7 +691,7 @@ Replacing the original divide-by-2 and divide-by-3 with the proposed FD design i
 
 ---
 
-### **4.4.	Final Evaluation**
+## **4.4.	Final Evaluation**
 <br>
 
 The simulation conditions are identical to the ones introduced in “4.1. Design Simulation”. Hence, we focus on the main points.

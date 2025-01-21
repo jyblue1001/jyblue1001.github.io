@@ -200,7 +200,7 @@ This is also the reason why in essence the node voltage X could not exactly reac
       <td style="border: 1px solid black; padding: 8px;" rowspan="2">Feed-forward capacitor</td>
       <td style="border: 1px solid black; padding: 8px;">C1</td>
       <td style="border: 1px solid black; padding: 8px;">M4 Feed-forward capacitor for better<br>pulse behavior (as a Rect signal)</td>
-      <td style="border: 1px solid black; padding: 8px;">W = 6μm, L = 5.4μm</td>
+      <td style="border: 1px solid black; padding: 8px;">W = 6μm, L = 4.4μm</td>
       <td style="border: 1px solid black; padding: 8px; border-left: 3px solid black; border-right: 3px solid black;" rowspan="2">Appropriate capacitance sizing<br>ensuring 100uA supply</td>
     </tr>
     <tr style="border-bottom: 3px solid black;">

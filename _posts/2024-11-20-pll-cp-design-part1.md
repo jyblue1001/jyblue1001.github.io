@@ -3,6 +3,7 @@ title: PLL - Charge Pump Design Part 1
 date: 2024-11-20
 categories: [Analog Design, PLL, CP]
 toc: true
+math: true
 ---
 
 # Table of Contents
@@ -92,20 +93,20 @@ Fig.6 is the SPICE code for the transient response simulations with some comment
 
 <div style="text-align: center;">
   <!-- First Image -->
-  <img src="{{site.url}}/images/pll_cp_design/part1/freq_vs_vcont.png" 
-       alt="freq_vs_vcont" 
-       style="width: 80%; display: block; margin: auto;" />
-
-  <!-- Second Image -->
-  <img src="{{site.url}}/images/pll_cp_design/part1/lock_state_vcont.png"  
-       alt="lock_state_vcont" 
-       style="width: 80%; display: block; margin: auto; margin-top: 0px;" />
-
-  <!-- Caption -->
+  <img src="{{site.url}}/images/pll_cp_design/part1/freq_vs_vcont.png" alt="freq_vs_vcont" style="width: 80%; display: block; margin: auto;" />
   <p><strong>Figure 7</strong></p>
 </div>
 
 <br>
+  <div style="text-align: center; font-size: 18px;">
+    $$ 0.8 + \left( \frac{ \text{2.4 GHz} \space - \space \text {Frequency of 0.8V VCO}}{\text {Frequency of 0.9V VCO} - \text {Frequency of 0.8V VCO}} \right) \cdot \text {V_cont Step Size} $$
+  </div>
+  <div style="text-align: center; font-size: 24px;">
+    $$ {\scriptstyle 0.8 \space\space + \space} \bigg( \frac{\scriptstyle {2.4 \cdot 10^{9}} \space\space - \space\space \large{\frac{1}{434 \cdot 10^{\small -12}}}}{\small{\frac{1}{414.26 \cdot 10^{-12}}} \space\space - \space\space \small{\frac{1}{434 \cdot 10^{-12}}}} \bigg) \space {\small \cdot} \space {\scriptstyle \space 0.1 \space } = {\scriptstyle \space 0.887} $$
+    <p><strong><span style="font-size: 18px;">Equation 1: V_cont Derivation </span></strong></p>
+  </div>
+<br>
+
 The V_CONT value for when the F_REF and F_VCO have the same speed are derived as fig.7. Where 0.8V exerts 2.37GHz and 0.9V produces 2.46GHz, we assume Kvco is linear between these two points and derive the V_CONT value where the VCO can produce 2.40GHz output signal.
 After the derivation, we configure the initial V_out voltage to 0.83V.
 
@@ -201,7 +202,7 @@ Similar to the 1st and 2nd condition, fig.12 is the pulse response of this trans
 
 <br>
 
-The 5th row of fig.13 shows the V_out result when the PLL is assumed to be in the lock state. To resolve its decreasing behavior, we can increase the length of M13 from 2um to 2.4um. The results are shown in fig.14
+The 5th row of fig.13 shows the V_out result when the PLL is assumed to be in the lock state. To resolve its decreasing behavior, we can increase the length of M13 from 2um to 2.7um. The results are shown in fig.14
 
 <div style="text-align: center;">
   <div style="display: flex; justify-content: center; align-items: center; gap: 10px;">
@@ -387,7 +388,7 @@ plt.show()
 
 This issue arises from the PMOS and NMOS current sourcing branches not sourcing the proper 100uA. 
 
-One might think of a solution by changing the length of M13 (0.15um → 0.4um) and M14 (0.15um → 0.9um), to match the 100uA output, which is shown in fig.21.
+One might think of a solution by changing the length of M13 (0.15um → 0.5um) and M14 (0.15um → 1.0um), to match the 100uA output, which is shown in fig.21.
 
 <br>
 
