@@ -80,7 +80,7 @@ In this design, we target dynamic latches due to their advantages in low power c
 
 ## **2.1.	Proposed Latch**
 
-Among various types of dynamic latches noted in [2], [fig.3](#fig3) and [fig.5](#fig) are the proposed topologies. For convenience, we will note them as “Comp SW FF” and “Ratioed TSPC FF”, in short, respectively.
+Among various types of dynamic latches noted in [2], [fig.3](#fig3) and [fig.5](#fig5) are the proposed topologies. For convenience, we will note them as “Comp SW FF” and “Ratioed TSPC FF”, in short, respectively.
 
 > TIP: TSPC → True Single Phased Clock .
 {: .prompt-tip }
@@ -217,7 +217,7 @@ In [fig.11](#fig11), we now guard both nodes of the pass-gate to suppress the pa
 
 #### **Ratioed TSPC FF**
 
-<div id="fig6" style="text-align: center;">
+<div id="fig14" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_schematic.png" alt="ratioed_tspc_ff_schematic" style="width:100%; display: block; margin: auto;" />
   <p><strong><span style="font-size: 16px;">Figure 14. Schematic Representation of Ratioed TSPC FF</span></strong></p>
 </div>
@@ -231,7 +231,7 @@ In [fig.11](#fig11), we now guard both nodes of the pass-gate to suppress the pa
 
 <br>
 
-<div id="fig13" style="text-align: center;">
+<div id="fig16" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_waveform.png" alt="ratioed_tspc_ff_waveform" style="width:100%; display: block; margin: auto;" />
   <p><strong><span style="font-size: 16px;">Figure 16. Ratioed TSPC FF Waveform</span></strong></p>
 </div>
