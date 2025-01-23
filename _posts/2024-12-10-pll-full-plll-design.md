@@ -13,7 +13,7 @@ math: true
 
 2. [Design Simulation](#2-design-simulation)<br>
   2.1. [Signal Analysis](#21-signal-analysis)<br>
-  &emsp;2.1.1. [Voltage Controlled Oscillator Signal](#211-voltage-controlled-dscillator-signal)<br>
+  &emsp;2.1.1. [Voltage Controlled Oscillator Signal](#211-voltage-controlled-oscillator-signal)<br>
   &emsp;2.1.2. [Divider Signal](#212-divider-signal)<br>
   &emsp;2.1.3. [Phase Frequency Detector Signal](#213-phase-frequency-detector-signal)<br>
   &emsp;2.1.4. [Charge Pump Signal](#214-charge-pump-signal)<br>
