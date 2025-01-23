@@ -53,7 +53,7 @@ In [fig.2](#fig2), shows the theoretical CP Loop 1, and Loop 2 behavior of negat
 
 ## **2. DC Analysis**
 
-#### **2.1. Topology and Operation Details Regarding DC analysis**
+### **2.1. Topology and Operation Details Regarding DC analysis**
 
 The proposed topology is shown in [fig.3](#fig3). The design of the OPAMP will be elaborated in step.2 because its spec requires insights in transient operations. Until then, we assume that the OPAMP has high-gain and therefore the negative-feedback loop keeps its two input the same.
 
@@ -96,7 +96,7 @@ This is also the reason why in essence the node voltage X could not exactly reac
 
 ---
 
-#### **2.2. Transistor Size Reasoning**  
+### **2.2. Transistor Size Reasoning**  
 
 <br>
 
@@ -321,7 +321,7 @@ While not suffering dramatic consequences from channel length modulation, W_p = 
 
 ## **3. Transient Analysis**
 
-#### **3.1. OPAMP Analysis**
+### **3.1. OPAMP Analysis**
 
 Before we begin Transient Simulation of the CP, we must develop our concept of our OPAMP. The priorities are the following.
 
@@ -563,7 +563,7 @@ The capacitance for the miller compensation could be derived through direct anal
 
 ---
 
-#### **3.2. Testbench Considerations**
+### **3.2. Testbench Considerations**
 
 <br>
 
@@ -585,7 +585,7 @@ The testbench is similar to the previous post.
 
 ---
 
-#### **3.3. Simulation Results**
+### **3.3. Simulation Results**
 
 We test the transient simulation by sorting three cases “Case 1”, “Case 2”, and “Case 3”. The only different component in those cases is the OPAMP, which is denoted in [table 4](#table4). Then, like the previous post, we examine all three conditions for each case. The 1st condition (F_REF slower than F_VCO), 2nd condition (F_REF faster than F_VCO), and 3rd condition.  
 
@@ -756,7 +756,7 @@ This shows that if the capacitance of the OPAMP output node is too small, the PL
 
 ## **4. Design Analysis**
 
-#### **4.1. Evaluation of Conditions**
+### **4.1. Evaluation of Conditions**
 
 For better comprehension, there are few notes to discuss, especially the first and the third.
 <br>
@@ -797,11 +797,11 @@ The values of C1 and C2 are decided so that both UP and DOWN pulses become recta
 
 <br>
 
-#### **4.2. Charge Pump Dead Zone**
+### **4.2. Charge Pump Dead Zone**
 
 The dead-zone configuration for this CP is the same as the previous post, and the results are shown in [fig.26](#fig26)  
 
-> [Dead-Zone Configuration]({{site.url}}/images/pll_cp_design/part1/dead_zone_spice.png)
+> [Charge Pump Dead Zone Section]({{site.url}}/posts/pll-cp-design-part1/#charge-pump-dead-zone)
 {: .prompt-info }
 
 <br>

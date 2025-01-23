@@ -15,6 +15,7 @@ math: true
 4. [Design Issues](#4-design-issues) 
    - [Large Transistors](#41-large-transistors)
    - [Non-Linear Charge Pump](#42-non-linear-charge-pump)
+    - [Charge Pump Dead Zone](#charge-pump-dead-zone)
 
 We now begin our design in charge pumps (CP). In this section, I divided the topics into two posts. This post presents the first CP design in the simplest topology but with limitations. The next post will propose the second CP that provides solutions to the first design while designed in nanoscale topology.
 
@@ -281,6 +282,8 @@ As depicted in the 4th row of fig.17, it is difficult to say if the charge pump 
 
 <br>
 
+#### **Charge Pump Dead Zone**  
+
 <div style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part1/dead_zone_spice.png" alt="dead_zone_spice" style="width:100%; display: block; margin: auto;" />
   <p><strong>Figure 18. Delay Parameter Sweep SPICE code for CP Dead-Zone Validation</strong></p>
@@ -317,9 +320,9 @@ After the simulation completes, we run “convert_txt_csv.py” which was introd
 
 The code for "current_per_delay_time.py" is shown below, and fig.20 is the result.
 
-<div style="text-align: left;">
-  <pre style="background: #f6f8fa; padding: 12px; border-radius: 6px; overflow-x: auto; border: 1px solid #e1e4e8; font-size: 12px; line-height: 1.5; font-family: 'Courier New', Courier, monospace;">
-  <code>
+
+```python
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -375,9 +378,8 @@ plt.savefig('charge_pump_current_vs_delay_time_upto_50ns.png')
 
 # Now show the plot
 plt.show()
-  </code>
-  </pre>
-</div>
+
+```
 
 <div style="text-align: center;">
   <img src="{{site.url}}/images/pll_cp_design/part1/dead_zone.png" alt="dead_zone" style="width:100%; display: block; margin: auto;" />

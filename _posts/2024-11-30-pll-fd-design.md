@@ -104,7 +104,7 @@ Among various types of dynamic latches noted in [2], [fig.3](#fig3) and [fig.5](
   <img src="{{site.url}}/images/pll_fd_design/split_path_ff_description.png"  
        alt="split_path_ff_description" 
        style="width: 50%; display: block; margin: auto; margin-top: 0px;" />
-  <p><strong>Figure 4. <a href="#reference-2" title="Go to Reference 2"> Split Signal Path TSPC Flip-Flop from [2]</a></strong></p>
+  <p><strong>Figure 4. <a href="#reference-2" title="Design of CMOS Phase-Locked Loops: From Circuit Level to Architecture Level"> Split Signal Path TSPC Flip-Flop from [2]</a></strong></p>
 </div>
 
 
@@ -123,7 +123,7 @@ Comp SW FF can be implemented “unratioed”, meaning there is no need for size
   <img src="{{site.url}}/images/pll_fd_design/ratioed_tspc_ff_description.png"  
        alt="ratioed_tspc_ff_description" 
        style="width: 40%; display: block; margin: auto; margin-top: 0px;" />
-  <p><strong>Figure 5. <a href="#reference-2" title="Go to Reference 2"> Ratioed TSPC Flip-Flop from [2]</a></strong></p>
+  <p><strong>Figure 5. <a href="#reference-2" title="Design of CMOS Phase-Locked Loops: From Circuit Level to Architecture Level"> Ratioed TSPC Flip-Flop from [2]</a></strong></p>
 </div>
 
 <br>
@@ -331,7 +331,7 @@ We change the FF to our configuration in then inspect how we can apply such an o
 
 <div id="fig25" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/div3_dev_process.png" alt="div3_dev_process" style="width:90%; display: block; margin: auto;" />
-  <p><strong><span style="font-size: 16px;"> Figure 25. Process of applying the logic of [fig.24](#fig24) with [fig.17](#fig17), with improvements</span></strong></p>
+  <p><strong><span style="font-size: 16px;"> Figure 25. Process of applying the logic of fig.24 with fig.17, with improvements</span></strong></p>
 </div>
 
 <br>
@@ -434,7 +434,7 @@ To make a Div5, we introduce the concept of a Dual Modulus Prescaler.
   <img src="{{site.url}}/images/pll_fd_design/dual_modulus_prescaler_description.png"  
        alt="dual_modulus_prescaler_description" 
        style="width: 50%; display: block; margin: auto; margin-top: 0px;" />
-  <p><strong>Figure 33. <a href="#reference-2" title="Go to Reference 2"> Dual Modulus Prescaler from [2]</a></strong></p>
+  <p><strong>Figure 33. <a href="#reference-2" title="Design of CMOS Phase-Locked Loops: From Circuit Level to Architecture Level"> Dual Modulus Prescaler from [2]</a></strong></p>
 </div>
 
 <br>
@@ -450,12 +450,12 @@ A <span style="color:lightblue;">dual modulus</span> <span style="color:red;">pr
   <img src="{{site.url}}/images/pll_fd_design/div5_description.png"  
        alt="div5_description" 
        style="width: 50%; display: block; margin: auto; margin-top: 0px;" />
-  <p><strong>Figure 34. <a href="#reference-2" title="Go to Reference 2"> Div5 from [2]</a></strong></p>
+  <p><strong>Figure 34. <a href="#reference-2" title="Design of CMOS Phase-Locked Loops: From Circuit Level to Architecture Level"> Div5 from [2]</a></strong></p>
 </div>
 
 <br>
 
-The dual modulus scaler, or the $\div$ 2/3 (Div2,3) circuit, can be designed as [fig.33](#fig33). In <a href="#reference-2" title="Go to Reference 2"> [2]</a>, it adopts an OR gate to implement the “switch between two division factors” function. Then, it could be advanced into a Div5 as shown in [fig.34](#fig34). 
+The dual modulus scaler, or the $\div$ 2/3 (Div2,3) circuit, can be designed as [fig.33](#fig33). In <a href="#reference-2" title="Design of CMOS Phase-Locked Loops: From Circuit Level to Architecture Level"> [2]</a>, it adopts an OR gate to implement the “switch between two division factors” function. Then, it could be advanced into a Div5 as shown in [fig.34](#fig34). 
 
 <div id="fig35" style="text-align: center;">
   <img src="{{site.url}}/images/pll_fd_design/and_with_or_input.png" alt="and_with_or_input" style="width:90%; display: block; margin: auto;" />
@@ -560,7 +560,7 @@ For the Comp_sw_FF, the FD is implemented as [fig.42](#fig42), with the simulati
 
 <br>
 
-The SPICE is written as [fig.43](#fig43), where the code is written similarly to SPICE for evaluating the Kvco in the VCO post. The code measures up to 120ns which covers at least one period of the divide-by-120 (20MHz = 50ns). 
+The SPICE is written as [fig.43](#fig43), where the code is written similarly to [SPICE for evaluating the Kvco in the VCO post]({{site.url}}/posts/pll-vco-design/#measuring-kvco). The code measures up to 120ns which covers at least one period of the divide-by-120 (20MHz = 50ns). 
 We write the code as such because, as we briefly mentioned in the last part of the VCO post, the capacitance from the FD influences the VCO, degrading its operation speed. So, we need to change the aspect ratio of the MOSFETs in the ringed oscillator so that it meets our frequency of interest, 2.4GHz.
 
 <div id="fig45" style="text-align: center;">
@@ -736,10 +736,6 @@ Additionally, we can confirm that the VCO output signal (top image of fig.58) do
 
 ---
 
-*Next post, the full topology of the PLL will be put under analysis.*
-
----
-
 <div>
   <h3>References</h3>
   <ul style="list-style-type: none; padding: 0; margin: 0;">
@@ -751,3 +747,7 @@ Additionally, we can confirm that the VCO output signal (top image of fig.58) do
     </li>
   </ul>
 </div>
+
+---
+
+*Next post, the full topology of the PLL will be put under analysis.*
