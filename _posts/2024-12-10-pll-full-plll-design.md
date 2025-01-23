@@ -13,10 +13,10 @@ math: true
 
 2. [Design Simulation](#2-design-simulation)<br>
   2.1. [Signal Analysis](#21-signal-analysis)<br>
-  &emsp;2.1.1. [Voltage Controlled Oscillator Signals](#211-voltage-controlled-dscillator-signals)<br>
-  &emsp;2.1.2. [Divider Signals](#212-divider-signals)<br>
-  &emsp;2.1.3. [Phase Frequency Detector Signals](#213-phase-frequency-detector-signals)<br>
-  &emsp;2.1.4. [Charge Pump Signals](#214-charge-pump-signals)<br>
+  &emsp;2.1.1. [Voltage Controlled Oscillator Signal](#211-voltage-controlled-dscillator-signal)<br>
+  &emsp;2.1.2. [Divider Signal](#212-divider-signal)<br>
+  &emsp;2.1.3. [Phase Frequency Detector Signal](#213-phase-frequency-detector-signal)<br>
+  &emsp;2.1.4. [Charge Pump Signal](#214-charge-pump-signal)<br>
 
 <!-- &nbsp;&ensp;&emsp; -->
 
@@ -29,9 +29,7 @@ math: true
 
 4. [Future Works](#4-future-works)<br>
   4.1. [Layout](#41-layout)<br>
-  4.2. [Impact of the Divider](#42-impact-of-the-divider)<br>
-  4.3. [Revised FF](#43-revised-ff)<br>
-  4.4. [Alternative Topologies](#44-alternative-topologies)<br>
+  4.2. [Alternative Topologies](#42-alternative-topologies)<br>
 
 <br>
 
@@ -52,7 +50,7 @@ Now we begin the design of the Full PLL. First, we assess the PLL components int
 
 <br>
 
-Fig.1. is the proposed topology of the PLL components assembly. As they are named, all the components are the final designs of their post. The inverters are the only new unit in this design. This leads to faster simulations, which is possible by avoiding signals that have sharp changes such as F_REF.
+[Fig.1](#fig1) is the proposed topology of the PLL components assembly. As they are named, all the components are the final designs of their post. The inverters are the only new unit in this design. This leads to faster simulations, which is possible by avoiding signals that have sharp changes such as F_REF.
 
 <div id="fig2" style="text-align: center;">
   <img src="{{site.url}}/images/pll_full_pll_design/inverter_output_signals.png" alt="inverter_output_signals" style="width:100%; display: block; margin: auto;" />
@@ -68,7 +66,7 @@ Fig.1. is the proposed topology of the PLL components assembly. As they are name
 
 <br>
 
-Fig.3 is the SPICE code for the simulations, with some description of the signals. The simulation runs for 9us to observe its stability in steady-state conditions. “V_osc” signal data were written to “.txt” files to be examined in Python. It is also important to save only the signals of interest, which will be about 300MB to our SPICE code. Avoid “save all” because it will create GBs of “.raw” data which will crash the simulation. 
+[Fig.3](#fig3) is the SPICE code for the simulations, with some description of the signals. The simulation runs for 9us to observe its stability in steady-state conditions. “V_osc” signal data were written to “.txt” files to be examined in Python. It is also important to save only the signals of interest, which will be about 300MB to our SPICE code. Avoid “save all” because it will create GBs of “.raw” data which will crash the simulation. 
 
 <br>
 
@@ -86,7 +84,7 @@ Fig.3 is the SPICE code for the simulations, with some description of the signal
 
 <br>
 
-Fig.4 is the simulated result of V_cont, where we can spot that the PLL successfully locks its state in a few microseconds.
+[Fig.4](#fig4) is the simulated result of V_cont, where we can spot that the PLL successfully locks its state in a few microseconds.
 
 <div id="fig5" style="text-align: center;">
   <img src="{{site.url}}/images/pll_full_pll_design/full_pll_vcont_2.png" alt="full_pll_vcont_2" style="width:100%; display: block; margin: auto;" />
@@ -95,7 +93,7 @@ Fig.4 is the simulated result of V_cont, where we can spot that the PLL successf
 
 <br>
 
-Fig.5 is the close-up V_CONT and V_OSC signals, with y-axis scale in mV. The aspect of V_CONT is similar to the “Condition 3” in the CP design part 2 post.
+[Fig.5](#fig5) is the close-up V_CONT and V_OSC signals, with y-axis scale in mV. The aspect of V_CONT is similar to the “Condition 3” in the CP design part 2 post.
 
 <br>
 
@@ -106,7 +104,7 @@ Fig.5 is the close-up V_CONT and V_OSC signals, with y-axis scale in mV. The asp
 
 <br>
 
-Up close like fig 6, the actual V_CONT distorts about 0.03mVpp. This occurs from the subtle changes in the input parasitic capacitances of the VCO components when the oscillation happens. Meaning, that the distortion comes from the VCO itself and cannot be suppressed unless the MOSFETs get smaller. However, with our devices from the Skywater130PDK, which limits the MOSFET size to [W: 0.43um, L: 0.15um], this is as far as we go.  
+Up close like [fig.6](#fig6), the actual V_CONT distorts about 0.03mVpp. This occurs from the subtle changes in the input parasitic capacitances of the VCO components when the oscillation happens. Meaning, that the distortion comes from the VCO itself and cannot be suppressed unless the MOSFETs get smaller. However, with our devices from the Skywater130PDK, which limits the MOSFET size to [W: 0.43um, L: 0.15um], this is as far as we go.  
 
 <br>
 
@@ -117,7 +115,7 @@ Up close like fig 6, the actual V_CONT distorts about 0.03mVpp. This occurs from
 
 <br>
 
-As shown in fig.7, by scaling the x-axis to a window of approx. 1ns, we can see the actual V_OSC waveform, with the period being 416.78, precisely 2.4GHz. 
+As shown in [fig.7](#fig7), by scaling the x-axis to a window of approx. 1ns, we can see the actual V_OSC waveform, with the period being 416.78, precisely 2.4GHz. 
 
 ---
 
@@ -144,7 +142,7 @@ As shown in fig.7, by scaling the x-axis to a window of approx. 1ns, we can see 
 
 <br>
 
-Fig.8 is the divider signals. As the plot goes down, the period of each graph ascends respectively to the value configured in the FD section.
+[Fig.8](#fig7) is the divider signals. As the plot goes down, the period of each graph ascends respectively to the value configured in the FD section.
 
 ---
 
@@ -157,7 +155,7 @@ Fig.8 is the divider signals. As the plot goes down, the period of each graph as
 
 <br>
 
-In fig.9, it shows the PFD signals in the transient state, the top plot as the PFD output signal and the bottom plot as the PFD output signal, respectively. The top plot also includes the V_cont signal to see how it reacts to the PFD measurements.
+In [fig.9](#fig9), it shows the PFD signals in the transient state, the top plot as the PFD output signal and the bottom plot as the PFD output signal, respectively. The top plot also includes the V_cont signal to see how it reacts to the PFD measurements.
 
 <div id="fig10" style="text-align: center;">
   <img src="{{site.url}}/images/pll_full_pll_design/pfd_steady_state.png" alt="pfd_steady_state" style="width:100%; display: block; margin: auto;" />
@@ -166,7 +164,7 @@ In fig.9, it shows the PFD signals in the transient state, the top plot as the P
 
 <br>
 
-In fig.10, shows the PFD signals in the steady state, meaning they are in the lock-state of V_cont as approx. 0.887V.  
+In [fig.10](#fig10), shows the PFD signals in the steady state, meaning they are in the lock-state of V_cont as approx. 0.887V.  
 The bottom plot is the PFD input signals and notice how the signal from the divider does not meet the duty cycle of 50%. Yet, our PFD is a positive edge-detecting component, leading to the outputs in the top plot. It releases the least pulse it can create, which is the minimum state transition time of the logic gates.
 
 ---
@@ -180,7 +178,7 @@ The bottom plot is the PFD input signals and notice how the signal from the divi
 
 <br>
 
-In fig.11, shows the CP currents in the transient state, it tries to provide currents up to 100uA.
+In [fig.11](#fig11), shows the CP currents in the transient state, it tries to provide currents up to 100uA.
 
 <div id="fig12" style="text-align: center;">
   <img src="{{site.url}}/images/pll_full_pll_design/cp_steady_state.png" alt="cp_steady_state" style="width:100%; display: block; margin: auto;" />
@@ -190,7 +188,7 @@ In fig.11, shows the CP currents in the transient state, it tries to provide cur
 <br>
 
 
-In fig.12, shows the CP currents in steady state, providing 100uA.
+In [fig.12](#fig12), shows the CP currents in steady state, providing 100uA.
 
 ---
 
@@ -218,7 +216,7 @@ Ngspice, the simulation tool for this project, has limitations in noise simulati
 
 ## **3.2.2.	VCO Non-Linearity**
 
-From fig.11, it is ambiguous that the CP is providing exactly 100uA. The first reason is the insufficient current from the reference current branch in initial conditions. This is the trait of using an OPAMP to create a replica circuit for current mirroring. Second, using a modest OPAMP could have caused the mismatch. Its design is too simple and has limitations for being not fully rail-to-rail leading to imperfections.
+From [fig.11](#fig11), it is ambiguous that the CP is providing exactly 100uA. The first reason is the insufficient current from the reference current branch in initial conditions. This is the trait of using an OPAMP to create a replica circuit for current mirroring. Second, using a modest OPAMP could have caused the mismatch. Its design is too simple and has limitations for being not fully rail-to-rail leading to imperfections.
 
 <br>
 
