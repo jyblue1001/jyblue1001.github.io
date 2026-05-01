@@ -1,57 +1,39 @@
-# Jae Young Yoon Tech Blog
+# Jae Young Yoon
 
-Personal technical blog for analog circuit design notes, PLL design writeups, and open-source IC design experiments.
-
-The live site is published at:
+This repository hosts my personal technical blog:
 
 ```text
 https://jyblue1001.github.io/
 ```
 
-## Stack
+The blog is a collection of notes, design logs, and circuit-level writeups from my work in analog integrated circuit design. Most of the current posts focus on phase-locked loop design, including VCOs, frequency dividers, phase-frequency detectors, charge pumps, loop filters, and full PLL integration.
 
-- Astro for static site generation
-- Markdown content collections for posts
-- KaTeX for equations
-- GitHub Actions for GitHub Pages deployment
+My goal is to document the design process in a way that is useful after the simulation window is closed: equations, topology choices, design tradeoffs, SPICE setup, waveform interpretation, and the reasoning behind each revision.
 
-## Project Structure
+## Main Topics
 
-```text
-astro-blog/
-  src/content/posts/      Blog posts
-  src/layouts/            Shared page layout
-  src/pages/              Site routes
-  src/styles/             Global styling
-  public/images/          Post images and static assets
-```
+- Analog CMOS circuit design
+- PLL architecture and block-level implementation
+- Open-source IC design tools
+- Simulation-driven circuit debugging
+- Technical notes from ongoing projects
 
-PLL posts are grouped under:
+## Current Series
 
-```text
-astro-blog/src/content/posts/pll/
-```
+The PLL series is organized as a set of connected posts that move from system-level parameters toward transistor-level implementation. The series is not meant to be a polished textbook; it is closer to a design notebook cleaned up for public reading.
 
-## Local Development
+Future posts may expand beyond PLLs into other analog and mixed-signal circuits.
 
-```bash
-cd astro-blog
-npm install
-npm run dev
-```
+## Repository
 
-Build the production site with:
-
-```bash
-npm run build
-```
-
-## Deployment
-
-Pushes to `main` run the `Build and Deploy Astro` GitHub Actions workflow. The workflow builds `astro-blog` and publishes `astro-blog/dist` to GitHub Pages.
-
-GitHub Pages should be configured with:
+The site is built with Astro. Blog posts live under:
 
 ```text
-Source: GitHub Actions
+astro-blog/src/content/posts/
+```
+
+Static images and figures live under:
+
+```text
+astro-blog/public/images/
 ```
