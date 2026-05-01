@@ -81,6 +81,25 @@ const navItems = [
     </div>
     <script is:inline>
       (() => {
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then((registrations) => {
+            registrations.forEach((registration) => registration.unregister());
+          });
+        }
+
+        if ('caches' in window) {
+          caches.keys().then((keys) => {
+            keys.forEach((key) => {
+              if (key.startsWith('chirpy-')) {
+                caches.delete(key);
+              }
+            });
+          });
+        }
+      })();
+    </script>
+    <script is:inline>
+      (() => {
         const storageKey = 'theme';
         const root = document.documentElement;
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
