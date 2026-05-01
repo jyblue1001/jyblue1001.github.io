@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate, getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+---
+
+<BaseLayout title="Archive">
+  <section class="page-head">
+    <p class="eyebrow">Timeline</p>
+    <h1>Archive</h1>
+  </section>
+  <ol class="archive-list">
+    {posts.map((post) => (
+      <li>
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        <a href={`/posts/${post.id}/`}>{post.data.title}</a>
+      </li>
+    ))}
+  </ol>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts, slugifyTaxonomy, uniqueSorted } from '../../lib/posts';
+
+const allPosts = await getPosts();
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return uniqueSorted(posts.flatMap((post) => post.data.categories)).map((category) => ({
+    params: { category: slugifyTaxonomy(category) },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props;
+const posts = allPosts.filter((post) => post.data.categories.includes(category));
+---
+
+<BaseLayout title={category}>
+  <section class="page-head">
+    <p class="eyebrow">Category</p>
+    <h1>{category}</h1>
+  </section>
+  <section class="post-list">
+    {posts.map((post) => <PostCard post={post} />)}
+  </section>
+</BaseLayout>

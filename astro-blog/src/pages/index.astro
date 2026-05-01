@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { getPosts } from '../lib/posts';
+
+const posts = await getPosts();
+---
+
+<BaseLayout>
+  <section class="page-head">
+    <p class="eyebrow">Analog IC Design Log</p>
+    <h1>Posts</h1>
+    <p>Design notes, simulation decisions, and PLL development logs using open-source EDA tools.</p>
+  </section>
+
+  <section class="post-list" aria-label="Blog posts">
+    {posts.map((post) => <PostCard post={post} />)}
+  </section>
+</BaseLayout>

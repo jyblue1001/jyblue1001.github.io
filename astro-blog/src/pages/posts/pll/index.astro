@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PostCard from '../../../components/PostCard.astro';
+import { getPosts } from '../../../lib/posts';
+
+const posts = (await getPosts()).filter((post) => post.id.startsWith('pll/'));
+---
+
+<BaseLayout title="PLL Posts" description="PLL design posts by Jae Young Yoon.">
+  <section class="page-head">
+    <p class="eyebrow">Series</p>
+    <h1>PLL Posts</h1>
+    <p>All current phased-locked loop design notes, grouped separately for future non-PLL topics.</p>
+  </section>
+
+  <section class="post-list" aria-label="PLL posts">
+    {posts.map((post) => <PostCard post={post} />)}
+  </section>
+</BaseLayout>

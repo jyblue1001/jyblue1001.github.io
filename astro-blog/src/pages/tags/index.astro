@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, slugifyTaxonomy, uniqueSorted } from '../../lib/posts';
+
+const posts = await getPosts();
+const tags = uniqueSorted(posts.flatMap((post) => post.data.tags));
+---
+
+<BaseLayout title="Tags">
+  <section class="page-head">
+    <p class="eyebrow">Browse</p>
+    <h1>Tags</h1>
+  </section>
+  <div class="tag-cloud">
+    {tags.map((tag) => <a href={`/tags/${slugifyTaxonomy(tag)}/`}>#{tag}</a>)}
+  </div>
+</BaseLayout>

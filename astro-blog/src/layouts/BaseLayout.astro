@@ -1,0 +1,142 @@
+---
+import '../styles/global.css';
+import 'katex/dist/katex.min.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const siteTitle = 'Jae Young Yoon';
+const tagline = 'High Speed Intergrated Analog Circuit Enthusiast (Interface Circuits)';
+const { title = siteTitle, description = 'Jae Young Yoon, Analog Circuit, Open Source EDA Tools, blog, github' } = Astro.props;
+const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
+const navItems = [
+  { href: '/', label: 'Posts' },
+  { href: '/archives/', label: 'Archive' },
+  { href: '/categories/', label: 'Categories' },
+  { href: '/tags/', label: 'Tags' }
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0f172a" />
+    <title>{pageTitle}</title>
+    <script is:inline>
+      (() => {
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme === 'light' || storedTheme === 'dark') {
+          document.documentElement.dataset.theme = storedTheme;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar" aria-label="Site navigation">
+        <a class="brand-mark" href="/" aria-label="Jae Young Yoon home">JY</a>
+        <div class="brand-copy">
+          <a class="site-title" href="/">{siteTitle}</a>
+          <p>{tagline}</p>
+        </div>
+        <nav class="site-nav">
+          {navItems.map((item) => (
+            <a href={item.href} class:list={{ active: Astro.url.pathname === item.href }}>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <button class="theme-toggle" type="button" aria-label="Switch color theme" aria-pressed="false">
+          <span class="theme-toggle-icon" aria-hidden="true"></span>
+          <span class="theme-toggle-text">Theme</span>
+        </button>
+        <div class="sidebar-links">
+          <a href="https://github.com/jyblue1001" rel="noreferrer">GitHub</a>
+          <a href="https://instagram.com/jaeyoungy1001" rel="noreferrer">Instagram</a>
+          <a href="mailto:jyblue1001@naver.com">Email</a>
+        </div>
+      </aside>
+
+      <div class="main-column">
+        <header class="topbar">
+          <a href="/" class="mobile-brand">JY</a>
+          <nav aria-label="Top navigation">
+            {navItems.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))}
+          </nav>
+          <button class="theme-toggle compact" type="button" aria-label="Switch color theme" aria-pressed="false">
+            <span class="theme-toggle-icon" aria-hidden="true"></span>
+          </button>
+        </header>
+        <main>
+          <slot />
+        </main>
+      </div>
+    </div>
+    <script is:inline>
+      (() => {
+        const storageKey = 'theme';
+        const root = document.documentElement;
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const getResolvedTheme = () => {
+          const storedTheme = localStorage.getItem(storageKey);
+          if (storedTheme === 'light' || storedTheme === 'dark') {
+            return storedTheme;
+          }
+
+          return mediaQuery.matches ? 'dark' : 'light';
+        };
+
+        const syncControls = () => {
+          const theme = getResolvedTheme();
+          document.querySelectorAll('.theme-toggle').forEach((button) => {
+            button.setAttribute('aria-pressed', String(theme === 'dark'));
+            button.setAttribute('title', `Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`);
+          });
+        };
+
+        document.querySelectorAll('.theme-toggle').forEach((button) => {
+          button.addEventListener('click', () => {
+            const nextTheme = getResolvedTheme() === 'dark' ? 'light' : 'dark';
+            root.dataset.theme = nextTheme;
+            localStorage.setItem(storageKey, nextTheme);
+            syncControls();
+          });
+        });
+
+        mediaQuery.addEventListener('change', () => {
+          if (!localStorage.getItem(storageKey)) {
+            syncControls();
+          }
+        });
+
+        syncControls();
+      })();
+    </script>
+    <script>
+      import renderMathInElement from 'katex/contrib/auto-render';
+
+      const fallbackTargets = document.querySelectorAll('.math-fallback');
+
+      fallbackTargets.forEach((target) => {
+        renderMathInElement(target, {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false },
+            { left: '$', right: '$', display: false }
+          ],
+          ignoredClasses: ['katex'],
+          throwOnError: false
+        });
+      });
+    </script>
+  </body>
+</html>

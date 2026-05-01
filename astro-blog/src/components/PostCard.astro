@@ -1,0 +1,27 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, readingTime } from '../lib/posts';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+}
+
+const { post } = Astro.props;
+const minutes = readingTime(post.body);
+---
+
+<article class="post-card">
+  <a href={`/posts/${post.id}/`} class="post-card-link">
+    <div class="post-card-main">
+      <div class="post-meta">
+        <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+        <span>{minutes} min read</span>
+      </div>
+      <h2>{post.data.title}</h2>
+      {post.data.description && <p>{post.data.description}</p>}
+    </div>
+    <div class="post-card-taxonomy">
+      {post.data.categories.map((category) => <span>{category}</span>)}
+    </div>
+  </a>
+</article>

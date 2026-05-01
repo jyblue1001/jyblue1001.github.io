@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPosts, slugifyTaxonomy, uniqueSorted } from '../../lib/posts';
+
+const posts = await getPosts();
+const categories = uniqueSorted(posts.flatMap((post) => post.data.categories));
+---
+
+<BaseLayout title="Categories">
+  <section class="page-head">
+    <p class="eyebrow">Browse</p>
+    <h1>Categories</h1>
+  </section>
+  <div class="taxonomy-grid">
+    {categories.map((category) => (
+      <a href={`/categories/${slugifyTaxonomy(category)}/`}>
+        <span>{category}</span>
+        <strong>{posts.filter((post) => post.data.categories.includes(category)).length}</strong>
+      </a>
+    ))}
+  </div>
+</BaseLayout>
