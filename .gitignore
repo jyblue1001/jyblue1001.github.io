@@ -1,32 +1,17 @@
-# Bundler cache
-.bundle
-vendor
-Gemfile.lock
+# Dependencies
+node_modules/
+astro-blog/node_modules/
 
-# Jekyll cache
-.jekyll-cache
-.jekyll-metadata
-_site
+# Astro build output
+astro-blog/.astro/
+astro-blog/dist/
 
-# RubyGems
-*.gem
+# Local environment
+.env
+.env.*
 
-# NPM dependencies
-node_modules
-package-lock.json
-!astro-blog/package-lock.json
-
-# IDE configurations
-.idea
-.vscode/*
-!.vscode/settings.json
-!.vscode/extensions.json
-!.vscode/tasks.json
-
-# Misc
-_sass/dist
-assets/js/dist
-
-# Astro prototype
-astro-blog/.astro
-astro-blog/dist
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
