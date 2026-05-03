@@ -1,3 +1,4 @@
+import type { CollectionEntry } from 'astro:content';
 import { getCollection } from 'astro:content';
 
 export async function getPosts() {
@@ -17,6 +18,38 @@ export function formatDate(date: Date) {
 export function readingTime(body: string) {
   const words = body.trim().split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 220));
+}
+
+export function getPostExcerpt(body: string, maxLength = 190) {
+  const cleaned = body
+    .replace(/^# Table of Contents[\s\S]*?(?=^##\s|\n[A-Z][^\n]+\n)/m, '')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
+    .replace(/\[[^\]]+\]\([^)]+\)/g, ' ')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/[*_`$]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+
+  if (cleaned.length <= maxLength) {
+    return cleaned;
+  }
+
+  return `${cleaned.slice(0, maxLength).replace(/\s+\S*$/, '')}...`;
+}
+
+export function getPostImage(body: string) {
+  const htmlImage = body.match(/<img[^>]+src=["']([^"']+)["'][^>]*>/i);
+  if (htmlImage?.[1]) {
+    return htmlImage[1];
+  }
+
+  const markdownImage = body.match(/!\[[^\]]*\]\(([^)\s]+)(?:\s+["'][^"']*["'])?\)/);
+  return markdownImage?.[1];
+}
+
+export function getPostThumbnail(post: CollectionEntry<'posts'>) {
+  return post.data.thumbnail ?? getPostImage(post.body);
 }
 
 export function uniqueSorted(values: string[]) {

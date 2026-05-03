@@ -2,6 +2,7 @@
 title: PLL - Frequency Divider Design
 date: 2024-11-30
 categories: [Analog Design, PLL, FD]
+thumbnail: /images/pll_fd_design/ratioed_tspc_ff.png
 toc: true
 math: true
 ---

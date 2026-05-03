@@ -1,19 +1,63 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/PostCard.astro';
-import { getPosts } from '../lib/posts';
+import { formatDate, getPostExcerpt, getPostThumbnail, getPosts, readingTime } from '../lib/posts';
 
 const posts = await getPosts();
+const featured = posts.find((post) => post.data.pin) ?? posts[0];
+const remainingPosts = featured ? posts.filter((post) => post.id !== featured.id) : posts;
+const featuredImage = featured ? getPostThumbnail(featured) : undefined;
+const featuredExcerpt = featured ? (featured.data.description ?? getPostExcerpt(featured.body, 230)) : '';
+const featuredMinutes = featured ? readingTime(featured.body) : 0;
 ---
 
 <BaseLayout>
-  <section class="page-head">
-    <p class="eyebrow">Analog IC Design Log</p>
-    <h1>Posts</h1>
-    <p>Design notes, simulation decisions, and PLL development logs using open-source EDA tools.</p>
+  <section class="publication-hero">
+    <div class="publication-copy">
+      <p class="eyebrow">Analog IC Design Log</p>
+      <h1>Circuit notes from PLL design and open-source IC experiments.</h1>
+      <p>
+        Technical writeups on topology choices, equations, simulation setup, waveform interpretation,
+        and the design tradeoffs behind each revision.
+      </p>
+      <div class="publication-stats" aria-label="Blog summary">
+        <span><strong>{posts.length}</strong> posts</span>
+        <span><strong>PLL</strong> series</span>
+        <span><strong>SPICE</strong> driven</span>
+      </div>
+    </div>
+
+    {featured && (
+      <article class="featured-post">
+        <a href={`/posts/${featured.id}/`}>
+          {featuredImage && (
+            <div class="featured-post-media" aria-hidden="true">
+              <img src={featuredImage} alt="" />
+            </div>
+          )}
+          <div class="featured-post-body">
+            <p class="eyebrow">Featured</p>
+            <div class="post-meta">
+              <time datetime={featured.data.date.toISOString()}>{formatDate(featured.data.date)}</time>
+              <span>{featuredMinutes} min read</span>
+            </div>
+            <h2>{featured.data.title}</h2>
+            {featuredExcerpt && <p>{featuredExcerpt}</p>}
+            <div class="post-card-taxonomy compact">
+              {featured.data.categories.map((category) => <span>{category}</span>)}
+            </div>
+          </div>
+        </a>
+      </article>
+    )}
   </section>
 
-  <section class="post-list" aria-label="Blog posts">
-    {posts.map((post) => <PostCard post={post} />)}
+  <section class="section-head">
+    <p class="eyebrow">Latest Notes</p>
+    <h2>Engineering writeups</h2>
+  </section>
+
+  <section class="post-list editorial-list" aria-label="Blog posts">
+    {remainingPosts.map((post) => <PostCard post={post} />)}
   </section>
 </BaseLayout>

@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { formatDate, readingTime } from '../lib/posts';
+import { formatDate, getPostExcerpt, getPostThumbnail, readingTime } from '../lib/posts';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -8,17 +8,24 @@ interface Props {
 
 const { post } = Astro.props;
 const minutes = readingTime(post.body);
+const excerpt = post.data.description ?? getPostExcerpt(post.body);
+const image = getPostThumbnail(post);
 ---
 
-<article class="post-card">
+<article class:list={['post-card', { 'has-media': image }]}>
   <a href={`/posts/${post.id}/`} class="post-card-link">
+    {image && (
+      <div class="post-card-media" aria-hidden="true">
+        <img src={image} alt="" loading="lazy" />
+      </div>
+    )}
     <div class="post-card-main">
       <div class="post-meta">
         <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
         <span>{minutes} min read</span>
       </div>
       <h2>{post.data.title}</h2>
-      {post.data.description && <p>{post.data.description}</p>}
+      {excerpt && <p>{excerpt}</p>}
     </div>
     <div class="post-card-taxonomy">
       {post.data.categories.map((category) => <span>{category}</span>)}

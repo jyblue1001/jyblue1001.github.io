@@ -23,7 +23,6 @@ Before starting off, one key point when creating designs is this excellent quote
 It is okay to perform **some aspect ratio checks** while validating step 1. However, if you ignore this process and jump into design without fully understanding the knobs you are controlling, you will most likely end up in an endless maze, wasting precious time.
 
 ---
-
 ## Initial VCO Design
 
 We begin with the simplest design, shown in **Figure 1**, and **Figure 2** explicitly demonstrates the functionality of the transistors.
@@ -122,9 +121,11 @@ To make the VCO active for all V_CONT values, we provide pathways for current by
   <img src="/images/pll_vco_design/vco_functionality.png" alt="VCO Functionality" style="width:70%; display: block; margin: auto;" />
   <p><strong>Figure 7 - VCO Functionality</strong></p>
 </div>
+
 ---
 
 ### Improving Kvco Linearity
+---
 
 #### Observation
 A linear Kvco is required within the operating control voltage range (**0V to 1.8V**). Currently, the Kvco slope increases rapidly as V_CONT rises, due to the PMOS growing stronger.
@@ -191,6 +192,8 @@ The process is time-consuming but results in the desired frequency response:
 
 <br>
 
+---
+
 ## Acutal Design Considerations
 
 However, there are actual design considerations that need to be taken into account.  
@@ -235,7 +238,7 @@ Calculating the exact frequency from the raw files, the Kvco value is **362 MHz/
 <br>
 
 $$
-\frac{\frac{1}{377.59\times{10^{-6}}}-\frac{1}{500.73\times{10^{-6}}}}{\scriptscriptstyle 1.8-0.0} = {\scriptstyle 362 \, \mathrm{MHz/V}}
+\frac{\dfrac{1}{377.59\times{10^{-6}}}-\dfrac{1}{500.73\times{10^{-6}}}}{1.8-0.0} = 362 \, \mathrm{MHz/V}
 $$
 
 <br>

@@ -9,7 +9,7 @@ export default defineConfig({
   site: 'https://jyblue1001.github.io',
   integrations: [sitemap()],
   markdown: {
-    remarkPlugins: [remarkGfm, remarkMath],
+    remarkPlugins: [[remarkGfm, { singleTilde: false }], remarkMath],
     rehypePlugins: [rehypeSlug, rehypeKatex],
     shikiConfig: {
       theme: 'github-dark'

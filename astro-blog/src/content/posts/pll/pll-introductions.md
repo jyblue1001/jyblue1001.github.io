@@ -25,11 +25,11 @@ This was because design difficulties arise when designing at high frequencies, a
 2. **Which open-source material?**  
 Here are the main open-source tools and resources I used for this project:
 
-    **Xschem** (schematics) - [https://xschem.sourceforge.io/stefan/index.html](https://xschem.sourceforge.io/stefan/index.html)  
-    **Ngspice** (simulations) - [https://ngspice.sourceforge.io/](https://ngspice.sourceforge.io/)  
-    **Magic VLSI** (layout) - <a href="http://opencircuitdesign.com/magic/" data-proofer-ignore>Magic</a>  
-    **Netgen** (netlist comparison, LVS) - <a href="http://opencircuitdesign.com/netgen/" data-proofer-ignore>Netgen</a>  
-    **Skywater130 PDK** (Process Design Kit) - [https://skywater-pdk.readthedocs.io/en/main/](https://skywater-pdk.readthedocs.io/en/main/)
+- **Xschem** (schematics) - [https://xschem.sourceforge.io/stefan/index.html](https://xschem.sourceforge.io/stefan/index.html)
+- **Ngspice** (simulations) - [https://ngspice.sourceforge.io/](https://ngspice.sourceforge.io/)
+- **Magic VLSI** (layout) - <a href="http://opencircuitdesign.com/magic/" data-proofer-ignore>Magic</a>
+- **Netgen** (netlist comparison, LVS) - <a href="http://opencircuitdesign.com/netgen/" data-proofer-ignore>Netgen</a>
+- **Skywater130 PDK** (Process Design Kit) - [https://skywater-pdk.readthedocs.io/en/main/](https://skywater-pdk.readthedocs.io/en/main/)
 
 
 > **IMPORTANT**: This post is a design log and does not cover instructions on how to use these tools. However, here are two YouTube playlists that helped me greatly in self-teaching these tools: **[Playlist 1](https://www.youtube.com/playlist?list=PLgsDG5BJZpBTEUaxjfvYUiMPpUPU_vQpr)** and **[Playlist 2](https://www.youtube.com/watch?v=bYbkz8FXnsQ)**.
