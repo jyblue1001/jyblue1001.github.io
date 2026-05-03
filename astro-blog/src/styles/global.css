@@ -913,6 +913,55 @@ main {
   padding-left: 0.85rem;
 }
 
+.comments-section {
+  max-width: 790px;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--book-rule);
+  color: var(--book-text);
+}
+
+.comments-head {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.comments-head .eyebrow {
+  margin: 0;
+  color: var(--accent);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.comments-head h2 {
+  margin: 0;
+  color: var(--book-text);
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.45rem;
+  font-variant: small-caps;
+  line-height: 1.2;
+}
+
+.comments-head p:not(.eyebrow),
+.comments-noscript {
+  margin: 0;
+  color: #5f574c;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 0.98rem;
+}
+
+.comments-frame {
+  min-height: 220px;
+}
+
+.comments-frame .utterances {
+  max-width: 100%;
+}
+
 .taxonomy-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

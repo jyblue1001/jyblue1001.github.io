@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import Comments from '../../components/Comments.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate, readingTime, slugifyTaxonomy } from '../../lib/posts';
 
@@ -47,5 +48,7 @@ const toc = headings.filter((heading) => heading.depth > 1 && heading.depth < 4)
         </aside>
       )}
     </div>
+
+    <Comments />
   </article>
 </BaseLayout>

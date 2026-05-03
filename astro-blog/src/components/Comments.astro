@@ -1,0 +1,70 @@
+<section class="comments-section" aria-labelledby="comments-title">
+  <div class="comments-head">
+    <p class="eyebrow">Discussion</p>
+    <h2 id="comments-title">Comments</h2>
+    <p>Share questions, corrections, or notes through GitHub.</p>
+  </div>
+  <div class="comments-frame" data-comments-host></div>
+  <noscript>
+    <p class="comments-noscript">Enable JavaScript to view and write comments.</p>
+  </noscript>
+</section>
+
+<script is:inline>
+  (() => {
+    const host = document.querySelector('[data-comments-host]');
+
+    if (!host || host.dataset.loaded === 'true') {
+      return;
+    }
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const getCommentTheme = () => {
+      const selectedTheme = document.documentElement.dataset.theme;
+
+      if (selectedTheme === 'light') {
+        return 'github-light';
+      }
+
+      if (selectedTheme === 'dark') {
+        return 'github-dark';
+      }
+
+      return mediaQuery.matches ? 'github-dark' : 'github-light';
+    };
+
+    const commentsScript = document.createElement('script');
+    commentsScript.src = 'https://utteranc.es/client.js';
+    commentsScript.async = true;
+    commentsScript.crossOrigin = 'anonymous';
+    commentsScript.setAttribute('repo', 'jyblue1001/jyblue1001.github.io');
+    commentsScript.setAttribute('issue-term', 'pathname');
+    commentsScript.setAttribute('label', 'blog-comment');
+    commentsScript.setAttribute('theme', getCommentTheme());
+
+    host.appendChild(commentsScript);
+    host.dataset.loaded = 'true';
+
+    const syncCommentTheme = () => {
+      const frame = document.querySelector('iframe.utterances-frame');
+
+      if (!frame?.contentWindow) {
+        return;
+      }
+
+      frame.contentWindow.postMessage(
+        {
+          type: 'set-theme',
+          theme: getCommentTheme()
+        },
+        'https://utteranc.es'
+      );
+    };
+
+    new MutationObserver(syncCommentTheme).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme']
+    });
+    mediaQuery.addEventListener('change', syncCommentTheme);
+  })();
+</script>
